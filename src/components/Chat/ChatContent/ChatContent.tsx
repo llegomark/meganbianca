@@ -1,11 +1,13 @@
-import useSubmit from "@hooks/useSubmit";
-import CrossIcon from "@icon/CrossIcon";
 import useStore from "@store/store";
+import { useEffect } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
+import CrossIcon from "@icon/CrossIcon";
 import ChatTitle from "./ChatTitle";
 import Message from "./Message";
 import NewMessageButton from "./Message/NewMessageButton";
 import ScrollToBottomButton from "./ScrollToBottomButton";
+
+import useSubmit from "@hooks/useSubmit";
 
 const ChatContent = () => {
   const inputRole = useStore((state) => state.inputRole);
@@ -26,8 +28,16 @@ const ChatContent = () => {
       ? state.chats[state.currentChatIndex].messages.length
       : 0
   );
+  const generating = useStore.getState().generating;
 
-  const { handleSubmit, error } = useSubmit();
+  // clear error at the start of generating new messages
+  useEffect(() => {
+    if (generating) {
+      setError("");
+    }
+  }, [generating]);
+
+  const { error } = useSubmit();
 
   return (
     <div className="flex-1 overflow-hidden">
@@ -57,8 +67,8 @@ const ChatContent = () => {
           />
 
           {error !== "" && (
-            <div className="relative bg-red-600/50 p-2 rounded-sm w-3/5 mt-3">
-              <div className="text-gray-900 dark:text-gray-300 text-sm break-words">
+            <div className="relative bg-red-600/50 p-2 rounded-sm w-3/5 mt-3 max-md:w-11/12">
+              <div className="text-gray-900 dark:text-gray-300 text-sm whitespace-pre-line">
                 {error}
               </div>
               <div
@@ -72,7 +82,7 @@ const ChatContent = () => {
             </div>
           )}
 
-          <div className="w-full h-36"></div>
+          <div className="w-full h-12 lg:h-36"></div>
         </div>
       </ScrollToBottom>
     </div>

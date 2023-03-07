@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: [
+        'Inter', 
         'Söhne',
         'ui-sans-serif',
         'system-ui',

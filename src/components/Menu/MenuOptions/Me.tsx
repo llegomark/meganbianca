@@ -8,7 +8,7 @@ const Me = () => {
       target="_blank"
     >
       <GithubIcon />
-      Github
+      GitHub
     </a>
   );
 };

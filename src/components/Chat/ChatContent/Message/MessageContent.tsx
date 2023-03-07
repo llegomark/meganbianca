@@ -397,7 +397,7 @@ const EditView = ({
             className="btn relative mr-2 btn-primary"
             onClick={handleSaveAndSubmit}
           >
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-2 font-bold">
               Submit
             </div>
           </button>
