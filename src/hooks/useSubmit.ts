@@ -133,13 +133,14 @@ const useSubmit = () => {
 
         const message: MessageInterface = {
           role: "user",
-          content: `Generate a very short title below six words for the following message:\nUser: ${user_message}\nAssistant: ${assistant_message}`,
+          content: `Generate a <6-word title for this message:\nUser: ${user_message}\nAssistant: ${assistant_message}`,
         };
 
         let title = await generateTitle([message]);
         if (title.startsWith('"') && title.endsWith('"')) {
           title = title.slice(1, -1);
         }
+        title = title.replace(/"/g, "");
         const updatedChats: ChatInterface[] = copyChats();
         updatedChats[currentChatIndex].title = title;
         updatedChats[currentChatIndex].titleSet = true;
