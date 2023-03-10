@@ -47,7 +47,7 @@ const PopupModal = ({
 
             {message && (
               <div className="p-6 border-b border-gray-200 dark:border-gray-600">
-                <div className="min-w-fit text-gray-900 dark:text-gray-300 text-sm mt-4">
+                <div className="min-w-fit text-gray-900 dark:text-gray-300 text-sm">
                   {message}
                 </div>
               </div>
@@ -55,7 +55,7 @@ const PopupModal = ({
 
             {children}
 
-            <div className="flex items-center justify-center p-6 gap-4 font-bold">
+            <div className="flex items-center justify-center p-6 gap-4">
               {handleConfirm && (
                 <button
                   type="button"

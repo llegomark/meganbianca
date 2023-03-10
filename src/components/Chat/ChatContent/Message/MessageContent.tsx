@@ -1,14 +1,4 @@
-import PopupModal from "@components/PopupModal";
-import useSubmit from "@hooks/useSubmit";
-import CopyIcon from "@icon/CopyIcon";
-import CrossIcon from "@icon/CrossIcon";
-import DeleteIcon from "@icon/DeleteIcon";
-import DownChevronArrow from "@icon/DownChevronArrow";
-import EditIcon2 from "@icon/EditIcon2";
-import RefreshIcon from "@icon/RefreshIcon";
-import TickIcon from "@icon/TickIcon";
 import useStore from "@store/store";
-import { ChatInterface } from "@type/chat";
 import DOMPurify from "dompurify";
 import hljs from "highlight.js";
 import React, { useEffect, useState } from "react";
@@ -16,6 +6,20 @@ import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
+
+import CopyIcon from "@icon/CopyIcon";
+import CrossIcon from "@icon/CrossIcon";
+import DeleteIcon from "@icon/DeleteIcon";
+import DownChevronArrow from "@icon/DownChevronArrow";
+import EditIcon2 from "@icon/EditIcon2";
+import RefreshIcon from "@icon/RefreshIcon";
+import TickIcon from "@icon/TickIcon";
+
+import useSubmit from "@hooks/useSubmit";
+
+import { ChatInterface } from "@type/chat";
+
+import PopupModal from "@components/PopupModal";
 
 const MessageContent = ({
   role,
@@ -65,9 +69,7 @@ const ContentView = React.memo(
     messageIndex: number;
   }) => {
     const { handleSubmit } = useSubmit();
-
     const [isDelete, setIsDelete] = useState<boolean>(false);
-    const [copied, setCopied] = useState<boolean>(false);
     const currentChatIndex = useStore((state) => state.currentChatIndex);
     const setChats = useStore((state) => state.setChats);
     const lastMessageIndex = useStore((state) =>
@@ -117,11 +119,13 @@ const ContentView = React.memo(
             components={{
               code({ node, inline, className, children, ...props }) {
                 if (inline) return <code>{children}</code>;
-                let highlight;
+                const [copied, setCopied] = useState<boolean>(false);
 
+                let highlight;
                 const match = /language-(\w+)/.exec(className || "");
                 const lang = match && match[1];
-                if (lang)
+                const isMatch = lang && hljs.getLanguage(lang);
+                if (isMatch)
                   highlight = hljs.highlight(children.toString(), {
                     language: lang,
                   });
@@ -150,7 +154,7 @@ const ContentView = React.memo(
                         ) : (
                           <>
                             <CopyIcon />
-                            Copy code
+                            Copy Code
                           </>
                         )}
                       </button>
@@ -387,8 +391,8 @@ const EditView = ({
           value={_content}
           onInput={handleInput}
           onKeyDown={handleKeyDown}
-          rows={1}
           placeholder="Type your message here..."
+          rows={1}
         ></textarea>
       </div>
       <div className="text-center mt-2 flex justify-center">
@@ -397,9 +401,7 @@ const EditView = ({
             className="btn relative mr-2 btn-primary"
             onClick={handleSaveAndSubmit}
           >
-            <div className="flex items-center justify-center gap-2 font-bold">
-              Submit
-            </div>
+            <div className="flex items-center justify-center gap-2">Send</div>
           </button>
         )}
 
@@ -419,9 +421,7 @@ const EditView = ({
               setIsModalOpen(true);
             }}
           >
-            <div className="flex items-center justify-center gap-2">
-              Save & Submit
-            </div>
+            <div className="flex items-center justify-center gap-2">Send</div>
           </button>
         )}
 

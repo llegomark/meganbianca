@@ -27,7 +27,7 @@ const MobileBar = () => {
           document.getElementById("menu-backdrop")?.classList.remove("hidden");
         }}
       >
-        <span className="sr-only">Open sidebar</span>
+        <span className="sr-only">Open Sidebar</span>
         <svg
           stroke="currentColor"
           fill="none"

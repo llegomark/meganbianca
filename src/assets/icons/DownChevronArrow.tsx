@@ -1,7 +1,7 @@
 const DownChevronArrow = ({ className }: { className?: string }) => {
   return (
     <svg
-      className={"w-4 h-4" + " " + className}
+      className={'w-4 h-4' + ' ' + className}
       aria-hidden="true"
       fill="none"
       stroke="currentColor"

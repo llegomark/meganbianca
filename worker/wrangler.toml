@@ -1,0 +1,13 @@
+name = "markllego"
+main = "src/index.js"
+compatibility_date = "2023-03-10"
+usage_model = "bundled"
+env = { }
+kv_namespaces = [
+  { binding = "kv", id = "11bded6f45913312c4e4a8a83cb842e282b3e" }
+]
+
+[triggers]
+crons = [ ]
+
+[vars]

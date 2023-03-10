@@ -1,4 +1,4 @@
-import { defaultSystemMessage } from "@constants/chat";
+import { generateDefaultChat } from "@constants/chat";
 import useStore from "@store/store";
 import { ChatInterface } from "@type/chat";
 
@@ -18,10 +18,7 @@ const useAddChat = () => {
         title = `New Chat ${titleIndex}`;
       }
 
-      updatedChats.unshift({
-        title,
-        messages: [{ role: "system", content: defaultSystemMessage }],
-      });
+      updatedChats.unshift(generateDefaultChat(title));
       setChats(updatedChats);
       setCurrentChatIndex(0);
     }

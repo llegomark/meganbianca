@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import useStore from '@store/store';
+import useStore from "@store/store";
+import { useState } from "react";
 
-import PersonIcon from '@icon/PersonIcon';
-import ApiMenu from '@components/ApiMenu';
+import ApiMenu from "@components/ApiMenu";
+import PersonIcon from "@icon/PersonIcon";
 
 const Config = () => {
   const apiFree = useStore((state) => state.apiFree);
@@ -11,11 +11,11 @@ const Config = () => {
   return (
     <>
       <a
-        className='flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm'
+        className="flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm"
         onClick={() => setIsModalOpen(true)}
       >
         <PersonIcon />
-        Account: {apiFree ? 'Free' : 'Personal'}
+        API: {apiFree ? "Free" : "Personal"}
       </a>
       <ApiMenu isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>

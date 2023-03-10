@@ -1,7 +1,9 @@
 import useStore from "@store/store";
 import React from "react";
+
 import PlusIcon from "@icon/PlusIcon";
-import { defaultSystemMessage } from "@constants/chat";
+
+import { generateDefaultChat } from "@constants/chat";
 import { ChatInterface } from "@type/chat";
 
 const NewMessageButton = React.memo(
@@ -22,10 +24,7 @@ const NewMessageButton = React.memo(
           title = `New Chat ${titleIndex}`;
         }
 
-        updatedChats.unshift({
-          title,
-          messages: [{ role: "system", content: defaultSystemMessage }],
-        });
+        updatedChats.unshift(generateDefaultChat(title));
         setChats(updatedChats);
         setCurrentChatIndex(0);
       }

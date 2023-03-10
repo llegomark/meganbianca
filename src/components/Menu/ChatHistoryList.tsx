@@ -1,11 +1,13 @@
-import useInitialiseNewChat from "@hooks/useInitialiseNewChat";
+import useStore from "@store/store";
+import React, { useEffect, useRef, useState } from "react";
+
 import ChatIcon from "@icon/ChatIcon";
 import CrossIcon from "@icon/CrossIcon";
 import DeleteIcon from "@icon/DeleteIcon";
 import EditIcon from "@icon/EditIcon";
 import TickIcon from "@icon/TickIcon";
-import useStore from "@store/store";
-import React, { useState } from "react";
+
+import useInitialiseNewChat from "@hooks/useInitialiseNewChat";
 
 const ChatHistoryList = () => {
   const setCurrentChatIndex = useStore((state) => state.setCurrentChatIndex);
@@ -34,7 +36,7 @@ const ChatHistoryList = () => {
 const ShowMoreButton = () => {
   return (
     <button className="btn relative btn-dark btn-small m-auto mb-2">
-      <div className="flex items-center justify-center gap-2">Show more</div>
+      <div className="flex items-center justify-center gap-2">Show More</div>
     </button>
   );
 };
@@ -67,6 +69,7 @@ const ChatHistory = ({
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const [_title, _setTitle] = useState<string>(title);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const active = currentChatIndex === chatIndex;
 
@@ -94,6 +97,10 @@ const ChatHistory = ({
     setIsEdit(false);
   };
 
+  useEffect(() => {
+    if (inputRef && inputRef.current) inputRef.current.focus();
+  }, [isEdit]);
+
   return (
     <a
       className={active ? ChatHistoryClass.active : ChatHistoryClass.normal}
@@ -104,23 +111,26 @@ const ChatHistory = ({
         {isEdit ? (
           <input
             type="text"
-            className="text-sm border-none bg-transparent p-0 m-0 w-full mr-0"
+            className="focus:outline-blue-600 text-sm border-none bg-transparent p-0 m-0 w-full"
             value={_title}
             onChange={(e) => {
               _setTitle(e.target.value);
             }}
+            ref={inputRef}
           />
         ) : (
           _title
         )}
 
-        <div
-          className={
-            active
-              ? ChatHistoryClass.activeGradient
-              : ChatHistoryClass.normalGradient
-          }
-        ></div>
+        {isEdit || (
+          <div
+            className={
+              active
+                ? ChatHistoryClass.activeGradient
+                : ChatHistoryClass.normalGradient
+            }
+          />
+        )}
       </div>
       {active && (
         <div className="absolute flex right-1 z-10 text-gray-300 visible">

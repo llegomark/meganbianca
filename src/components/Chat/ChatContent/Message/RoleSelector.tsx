@@ -1,7 +1,8 @@
-import DownChevronArrow from "@icon/DownChevronArrow";
 import useStore from "@store/store";
-import { ChatInterface, Role, roles } from "@type/chat";
 import { useState } from "react";
+
+import DownChevronArrow from "@icon/DownChevronArrow";
+import { ChatInterface, Role, roles } from "@type/chat";
 
 const RoleSelector = ({
   role,
@@ -18,6 +19,14 @@ const RoleSelector = ({
 
   const [dropDown, setDropDown] = useState<boolean>(false);
 
+  // Use a variable to hold the display name of the role
+  let roleName = role.charAt(0).toUpperCase() + role.slice(1);
+
+  // Conditionally update the role name if the role is "assistant"
+  if (role === "assistant") {
+    roleName = "Mark";
+  }
+
   return (
     <div className="prose dark:prose-invert relative">
       <button
@@ -25,7 +34,7 @@ const RoleSelector = ({
         type="button"
         onClick={() => setDropDown((prev) => !prev)}
       >
-        {role.charAt(0).toUpperCase() + role.slice(1)}
+        {roleName}
         <DownChevronArrow />
       </button>
       <div
@@ -64,4 +73,5 @@ const RoleSelector = ({
     </div>
   );
 };
+
 export default RoleSelector;

@@ -16,7 +16,7 @@ const UserAvatar = () => {
   return (
     <div
       className="relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center"
-      style={{ backgroundColor: "rgb(231,84,128)" }}
+      style={{ backgroundColor: "rgb(200, 70, 70)" }}
     >
       <PersonIcon />
     </div>
@@ -27,9 +27,12 @@ const AssistantAvatar = () => {
   return (
     <div
       className="relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center"
-      style={{ backgroundImage: "url('/markllego.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-    >
-    </div>
+      style={{
+        backgroundImage: "url('/markllego.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    ></div>
   );
 };
 
@@ -37,7 +40,7 @@ const SystemAvatar = () => {
   return (
     <div
       className="relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center"
-      style={{ backgroundColor: "rgb(84,128,231)" }}
+      style={{ backgroundColor: "rgb(126, 163, 227)" }}
     >
       <SettingIcon />
     </div>

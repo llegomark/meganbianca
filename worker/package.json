@@ -1,0 +1,15 @@
+{
+  "name": "markllego-api",
+  "version": "0.0.0",
+  "devDependencies": {
+    "wrangler": "2.12.2"
+  },
+  "private": true,
+  "scripts": {
+    "start": "wrangler dev",
+    "deploy": "wrangler publish"
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}

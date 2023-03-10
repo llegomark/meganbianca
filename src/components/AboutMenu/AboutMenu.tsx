@@ -8,7 +8,7 @@ const AboutMenu = () => {
   return (
     <>
       <a
-        className="flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm sm:w-max"
+        className="flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm"
         onClick={() => {
           setIsModalOpen(true);
         }}
@@ -52,17 +52,76 @@ const AboutMenu = () => {
                   24/7 availability
                 </li>
               </ul>
-              <p className="text-sm text-gray-900 dark:text-gray-300 mb-3">
-                <strong>Privacy Notice</strong>
+              <p className="text-sm text-gray-900 dark:text-gray-300 mb-3 font-bold">
+                Privacy Notice
               </p>
               <p className="text-sm text-gray-900 dark:text-gray-300 mb-3">
-                Thank you for choosing our services. We respect your privacy and
-                are committed to protecting it with the highest standards.
+                Thank you for choosing our services. We highly value your
+                privacy and are fully committed to keeping it safe and secure.
               </p>
               <p className="text-sm text-gray-900 dark:text-gray-300 mb-3">
-                We do not collect or store any text you enter or receive from
-                the OpenAI server in any form. Our source code is available for
-                your inspection to verify this statement.
+                Your conversations with our AI are exclusively stored on your
+                local web browser and are not saved anywhere else. Rest assured,
+                we do not have access to any of your conversations.
+              </p>
+              <p className="text-sm text-gray-900 dark:text-gray-300 mb-5">
+                We do not collect or store any text that you enter or receive
+                from our server in any form.
+              </p>
+              <p className="text-xs text-gray-900 dark:text-gray-300">
+                Copyright © 2023 Eduventure Web Development Services
+              </p>
+              <p className="text-xs text-gray-900 dark:text-gray-300">
+                Web Application created by:{" "}
+                <a
+                  href="https://twitter.com/nikushii_"
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Nixie
+                </a>
+                ,{" "}
+                <a
+                  href="https://twitter.com/ayaka14732"
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ayaka
+                </a>
+                , and further improved by{" "}
+                <a
+                  href="https://twitter.com/markllego"
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Mark
+                </a>
+                .
+              </p>
+              <p className="text-xs text-gray-900 dark:text-gray-300">
+                Source Code:{" "}
+                <a
+                  href="https://github.com/llegomark/markllego-chat"
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </p>
+              <p className="text-xs text-gray-900 dark:text-gray-300">
+                License:{" "}
+                <a
+                  href="https://github.com/llegomark/markllego-chat/blob/master/LICENSE"
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  CC0 1.0 Universal
+                </a>
               </p>
             </div>
           </div>

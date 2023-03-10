@@ -1,5 +1,6 @@
-import useAddChat from "@hooks/useAddChat";
 import PlusIcon from "@icon/PlusIcon";
+
+import useAddChat from "@hooks/useAddChat";
 
 const NewChat = () => {
   const addChat = useAddChat();

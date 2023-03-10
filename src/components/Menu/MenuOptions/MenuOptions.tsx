@@ -1,20 +1,21 @@
-import Config from "./Api";
+import AboutMenu from "@components/AboutMenu";
+import DisclaimerMenu from "@components/DisclaimerMenu";
+import Api from "./Api";
 import ClearConversation from "./ClearConversation";
 import Me from "./Me";
 import ThemeSwitcher from "./ThemeSwitcher";
-import Updates from "./Updates";
-import AboutMenu from "@components/AboutMenu";
 
 const MenuOptions = () => {
   return (
     <>
       <ClearConversation />
       <ThemeSwitcher />
-      <Config />
+      <Api />
+      <DisclaimerMenu />
       <AboutMenu />
       {/* <Account /> */}
+      {/* <Github /> */}
       <Me />
-      <Updates />
       {/* <Logout /> */}
     </>
   );

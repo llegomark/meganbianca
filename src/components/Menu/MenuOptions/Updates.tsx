@@ -1,16 +1,16 @@
-import TwitterIcon from "@icon/TwitterIcon";
+import GithubIcon from "@icon/GithubIcon";
 
-const Updates = () => {
+const Github = () => {
   return (
     <a
-      href="https://twitter.com/markllego"
+      href="https://github.com/llegomark/"
       target="_blank"
       className="flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm"
     >
-      <TwitterIcon />
-      @markllego
+      <GithubIcon />
+      GitHub
     </a>
   );
 };
 
-export default Updates;
+export default Github;

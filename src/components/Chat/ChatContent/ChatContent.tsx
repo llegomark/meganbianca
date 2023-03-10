@@ -1,6 +1,7 @@
 import useStore from "@store/store";
 import { useEffect } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
+
 import CrossIcon from "@icon/CrossIcon";
 import ChatTitle from "./ChatTitle";
 import Message from "./Message";
@@ -67,8 +68,8 @@ const ChatContent = () => {
           />
 
           {error !== "" && (
-            <div className="relative bg-red-600/50 p-2 rounded-sm w-3/5 mt-3 max-md:w-11/12">
-              <div className="text-gray-900 dark:text-gray-300 text-sm whitespace-pre-line">
+            <div className="relative py-2 px-3 w-3/5 mt-3 max-md:w-11/12 border rounded-md border-red-500 bg-red-500/10">
+              <div className="text-gray-600 dark:text-gray-100 text-sm whitespace-pre-line">
                 {error}
               </div>
               <div
@@ -82,7 +83,7 @@ const ChatContent = () => {
             </div>
           )}
 
-          <div className="w-full h-12 lg:h-36"></div>
+          <div className="w-full h-36"></div>
         </div>
       </ScrollToBottom>
     </div>
