@@ -122,7 +122,7 @@ const ExportChat = () => {
   return (
     <div className="mt-6">
       <div className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-        (JSON)
+        Export (JSON)
       </div>
       <button className="btn btn-small btn-primary" onClick={handleExport}>
         Export
