@@ -1,6 +1,7 @@
 import PopupModal from "@components/PopupModal";
 import AboutIcon from "@icon/AboutIcon";
 import { useState } from "react";
+import Updates from "@components/Menu/MenuOptions/Updates";
 
 const AboutMenu = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -68,10 +69,10 @@ const AboutMenu = () => {
                 We do not collect or store any text that you enter or receive
                 from our server in any form.
               </p>
-              <p className="text-xs text-gray-900 dark:text-gray-300">
+              <p className="text-xs text-gray-900 dark:text-gray-300 text-center">
                 Copyright © 2023 Eduventure Web Development Services
               </p>
-              <p className="text-xs text-gray-900 dark:text-gray-300">
+              <p className="text-xs text-gray-900 dark:text-gray-300 text-center">
                 Web Application created by:{" "}
                 <a
                   href="https://twitter.com/nikushii_"
@@ -101,18 +102,7 @@ const AboutMenu = () => {
                 </a>
                 .
               </p>
-              <p className="text-xs text-gray-900 dark:text-gray-300">
-                Source Code:{" "}
-                <a
-                  href="https://github.com/llegomark/markllego-chat"
-                  className="underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
-              </p>
-              <p className="text-xs text-gray-900 dark:text-gray-300">
+              <p className="text-xs text-gray-900 dark:text-gray-300 mb-5 text-center">
                 License:{" "}
                 <a
                   href="https://github.com/llegomark/markllego-chat/blob/master/LICENSE"
@@ -124,6 +114,7 @@ const AboutMenu = () => {
                 </a>
               </p>
             </div>
+            <Updates isButton />
           </div>
         </PopupModal>
       )}

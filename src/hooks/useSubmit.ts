@@ -12,6 +12,8 @@ import useStore from "@store/store";
 import { ChatInterface, MessageInterface } from "@type/chat";
 import { limitMessageTokens } from "@utils/messageUtils";
 
+const copyChats = () => JSON.parse(JSON.stringify(useStore.getState().chats));
+
 const useSubmit = () => {
   const error = useStore((state) => state.error);
   const setError = useStore((state) => state.setError);
@@ -42,7 +44,7 @@ const useSubmit = () => {
     const chats = useStore.getState().chats;
     if (generating || !chats) return;
 
-    const updatedChats: ChatInterface[] = JSON.parse(JSON.stringify(chats));
+    const updatedChats: ChatInterface[] = copyChats();
 
     updatedChats[currentChatIndex].messages.push({
       role: "assistant",
@@ -105,9 +107,7 @@ const useSubmit = () => {
               }
             }, "");
 
-            const updatedChats: ChatInterface[] = JSON.parse(
-              JSON.stringify(useStore.getState().chats)
-            );
+            const updatedChats: ChatInterface[] = copyChats();
             const updatedMessages = updatedChats[currentChatIndex].messages;
             updatedMessages[updatedMessages.length - 1].content += resultString;
             setChats(updatedChats);
@@ -140,18 +140,13 @@ const useSubmit = () => {
         if (title.startsWith('"') && title.endsWith('"')) {
           title = title.slice(1, -1);
         }
-        const updatedChats: ChatInterface[] = JSON.parse(
-          JSON.stringify(useStore.getState().chats)
-        );
+        const updatedChats: ChatInterface[] = copyChats();
         updatedChats[currentChatIndex].title = title;
         updatedChats[currentChatIndex].titleSet = true;
         setChats(updatedChats);
-        console.log(message);
-        console.log(title);
       }
     } catch (e: unknown) {
       const err = (e as Error).message;
-      console.log(err);
       setError(err);
     }
     setGenerating(false);

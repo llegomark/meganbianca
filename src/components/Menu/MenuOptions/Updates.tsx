@@ -1,16 +1,21 @@
-import GithubIcon from "@icon/GithubIcon";
+import React from "react";
+import LinkIcon from "@icon/LinkIcon";
 
-const Github = () => {
+const Updates = ({ isButton = false }: { isButton?: boolean }) => {
   return (
     <a
-      href="https://github.com/llegomark/"
+      href="https://github.com/llegomark/markllego-chat"
       target="_blank"
-      className="flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm"
+      className={
+        isButton
+          ? "flex py-3 px-3 items-center gap-3 transition-colors duration-200 btn btn-neutral text-sm justify-center"
+          : "flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm"
+      }
     >
-      <GithubIcon />
+      <LinkIcon />
       GitHub
     </a>
   );
 };
 
-export default Github;
+export default Updates;
