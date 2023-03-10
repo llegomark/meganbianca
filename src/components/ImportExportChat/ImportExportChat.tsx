@@ -110,17 +110,21 @@ const ImportChat = () => {
 
 const ExportChat = () => {
   const chats = useStore.getState().chats;
+
+  const handleExport = () => {
+    if (chats) {
+      const randomNumber = Math.floor(Math.random() * 1000000);
+      const fileName = getToday() + "_" + randomNumber;
+      downloadFile(chats, fileName);
+    }
+  };
+
   return (
     <div className="mt-6">
       <div className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-        Export (JSON)
+        (JSON)
       </div>
-      <button
-        className="btn btn-small btn-primary"
-        onClick={() => {
-          if (chats) downloadFile(chats, getToday());
-        }}
-      >
+      <button className="btn btn-small btn-primary" onClick={handleExport}>
         Export
       </button>
     </div>
