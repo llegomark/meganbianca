@@ -71,7 +71,7 @@ const ApiMenu = ({
         {_apiFree && (
           <div className="mt-2 mb-6">
             <div className="text-sm text-gray-900 dark:text-gray-300 mb-2">
-              Default: https://api.markllego.com/v1/
+              Default: https://api.meganchat.com/v1/
             </div>
             <div className="flex gap-2 items-center justify-center">
               {/* <div className="min-w-fit text-gray-900 dark:text-gray-300 text-sm">
@@ -129,7 +129,7 @@ const ApiMenu = ({
           </a>
         </div> */}
         <div className="min-w-fit text-gray-900 dark:text-gray-300 text-sm mt-4">
-          The free version of our service enables only up to 100 requests per
+          The free version of our service enables only up to 40 requests per
           hour. To enjoy unrestricted access, please enter the API Key or API
           Endpoint you purchased.
         </div>

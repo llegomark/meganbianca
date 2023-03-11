@@ -16,41 +16,75 @@ const DisclaimerMenu = () => {
         <div>
           <DisclaimerIcon />
         </div>
-        Disclaimer
+        Privacy Policy
       </a>
       {isModalOpen && (
         <PopupModal
-          title="General Information Disclaimer"
+          title="Privacy Policy"
           setIsModalOpen={setIsModalOpen}
           cancelButton={false}
         >
           <div className="p-6 border-b border-gray-200 dark:border-gray-600">
             <div className="min-w-fit text-gray-900 dark:text-gray-300 text-sm">
-              <p className="text-sm text-gray-900 dark:text-gray-300 mb-3">
-                The AI language model is an artificial intelligence platform
-                designed to provide information to users. However, please note
-                that the information provided by the AI language model may not
-                always be entirely accurate or comprehensive. Users are advised
-                to verify any information provided by the AI language model and
-                exercise their own judgment in using it.
+              {/* <h2 className="text-lg text-gray-900 dark:text-gray-300 font-bold mb-3">
+                Privacy Notice
+              </h2> */}
+              <p className="text-sm mb-3">
+                At Eduventure Web Development Services, we take your privacy
+                seriously and are committed to protecting it. This privacy
+                notice explains how we collect, use, and safeguard your personal
+                data when you use our services.
               </p>
-              <p className="text-sm text-gray-900 dark:text-gray-300 mb-3">
-                It is important to note that the AI language model provides
-                general information only and should not be considered as
-                professional advice. Therefore, users should use the information
-                provided by the AI language model at their own risk. While the
-                AI language model aims to provide accurate and up-to-date
-                information, it cannot guarantee the accuracy or completeness of
-                any information provided.
+              <h3 className="text-base text-gray-900 dark:text-gray-300 font-bold mb-3">
+                Data Collection and Use
+              </h3>
+              <p className="text-sm mb-3">
+                We do not collect or store any text that you enter or receive
+                from our server in any form. All conversations you have with our
+                AI language model, which is powered by OpenAI, are exclusively
+                stored on your local web browser and are not saved anywhere
+                else. We do not have access to any of your conversations or
+                personal data.
               </p>
-              <p className="text-sm text-gray-900 dark:text-gray-300 mb-3">
-                As a result, users should take responsibility for verifying the
-                accuracy of any information provided by the AI language model
-                before making any decisions based on it. In conclusion, the AI
-                language model is an artificial intelligence platform that
-                provides general information, and users should exercise their
-                own judgment and verify any information provided by the AI
-                language model before using it.
+              <h3 className="text-base text-gray-900 dark:text-gray-300 font-bold mb-3">
+                Third-Party Services
+              </h3>
+              <p className="text-sm mb-3">
+                We use third-party services to improve the quality, speed, and
+                security of our website. We use Cloudflare for hosting, API
+                endpoints, analytics, site speed, and security. Cloudflare may
+                collect and use your personal data according to their own
+                privacy policies. We also use OpenAI for the AI language model
+                and Google Analytics to analyze user behavior and improve our
+                services. OpenAI and Google Analytics may collect and use your
+                personal data according to their own privacy policies.
+              </p>
+              <h3 className="text-base text-gray-900 dark:text-gray-300 font-bold mb-3">
+                Data Security
+              </h3>
+              <p className="text-sm mb-3">
+                We have implemented appropriate technical and organizational
+                measures to safeguard your personal data from unauthorized
+                access, use, or disclosure. However, please note that no data
+                transmission over the internet can be guaranteed to be 100%
+                secure, and we cannot guarantee the security of any information
+                you provide to us.
+              </p>
+              <h3 className="text-base text-gray-900 dark:text-gray-300 font-bold mb-3">
+                Changes to this Privacy Notice
+              </h3>
+              <p className="text-sm mb-3">
+                We reserve the right to update or change this privacy notice at
+                any time without prior notice. We encourage you to review this
+                notice periodically to stay informed about our data collection
+                and use practices.
+              </p>
+              <h3 className="text-base text-gray-900 dark:text-gray-300 font-bold mb-3">
+                Contact Us
+              </h3>
+              <p className="text-sm mb-3">
+                If you have any questions or concerns about our privacy
+                practices, please contact us at support@eduventure.dev.
               </p>
             </div>
           </div>

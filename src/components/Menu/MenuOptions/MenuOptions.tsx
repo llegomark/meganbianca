@@ -14,9 +14,9 @@ const MenuOptions = () => {
       <ThemeSwitcher />
       <Api />
       <DisclaimerMenu />
-      <AboutMenu />
       {/* <Account /> */}
       {/* <Github /> */}
+      <AboutMenu />
       <Me />
       {/* <Logout /> */}
     </>

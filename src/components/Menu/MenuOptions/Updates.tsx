@@ -4,7 +4,7 @@ import LinkIcon from "@icon/LinkIcon";
 const Updates = ({ isButton = false }: { isButton?: boolean }) => {
   return (
     <a
-      href="https://github.com/llegomark/markllego-chat"
+      href="https://github.com/llegomark/meganbianca"
       target="_blank"
       className={
         isButton

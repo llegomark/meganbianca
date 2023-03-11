@@ -1,6 +1,8 @@
 import PersonIcon from "@icon/PersonIcon";
 import SettingIcon from "@icon/SettingIcon";
+import OpenAIIcon from "@icon/OpenAIIcon";
 import { Role } from "@type/chat";
+import PersonLargeIcon from "@icon/PersonLargeIcon";
 
 const Avatar = ({ role }: { role: Role }) => {
   return (
@@ -16,9 +18,9 @@ const UserAvatar = () => {
   return (
     <div
       className="relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center"
-      style={{ backgroundColor: "rgb(200, 70, 70)" }}
+      style={{ backgroundColor: "rgb(204, 85, 119)" }}
     >
-      <PersonIcon />
+      <PersonLargeIcon />
     </div>
   );
 };
@@ -28,7 +30,7 @@ const AssistantAvatar = () => {
     <div
       className="relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center"
       style={{
-        backgroundImage: "url('/markllego.jpg')",
+        backgroundImage: "url('/meganprofilepic.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -40,9 +42,9 @@ const SystemAvatar = () => {
   return (
     <div
       className="relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center"
-      style={{ backgroundColor: "rgb(126, 163, 227)" }}
+      style={{ backgroundColor: "rgb(0, 128, 0)" }}
     >
-      <SettingIcon />
+      <OpenAIIcon />
     </div>
   );
 };

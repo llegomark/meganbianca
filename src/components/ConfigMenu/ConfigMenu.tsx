@@ -32,7 +32,7 @@ const ConfigMenu = ({
     >
       <div className="p-6 border-b border-gray-200 dark:border-gray-600">
         <div>
-          <label className="block text-sm font-medium text-gray-900 dark:text-white">
+          <label className="block text-sm  text-gray-900 dark:text-white">
             Temperature: {_temperature}
           </label>
           <input
@@ -62,7 +62,7 @@ const ConfigMenu = ({
           </div>
         </div>
         <div className="mt-5 pt-5 border-t border-gray-500">
-          <label className="block text-sm font-medium text-gray-900 dark:text-white">
+          <label className="block text-sm  text-gray-900 dark:text-white">
             Presence Penalty: {_presencePenalty}
           </label>
           <input
@@ -77,25 +77,25 @@ const ConfigMenu = ({
             step={0.1}
             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
           />
-          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-xs mt-2">
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-xs mt-3">
             Default is 0. Avoid changing; advanced users only.
           </div>
-          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-2">
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
             Number between -2.0 and 2.0. Positive values penalize new tokens
             based on whether they appear in the text so far, increasing the
             model's likelihood to talk about new topics.
           </div>
-          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-xs mt-5">
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-xs mt-3">
             Note: When adjusting the settings, only modify one parameter at a
             time.
           </div>
         </div>
         <div className="mt-5 pt-5 border-t border-gray-500">
-          <label className="block text-sm font-medium text-gray-900 dark:text-white">
+          <h2 className="block text-lg  text-gray-900 dark:text-white">
             Maximizing Language Model Potential: Understanding Temperature and
             Presence Penalty
-          </label>
-          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-2">
+          </h2>
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
             In simple terms, the Temperature parameter in language model
             controls how creative or focused the AI-generated text output will
             be. Lower values of temperature make the output more predictable by
@@ -103,13 +103,13 @@ const ConfigMenu = ({
             while higher values make the output more unpredictable by allowing
             the AI to generate more unexpected content.
           </div>
-          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-2">
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
             For example, if you set the Temperature to 0.8, the AI may generate
             responses that are less predictable and more spontaneous, while if
             you set the Temperature to 0.2, the AI may generate responses that
             are more focused on what it has already learned.
           </div>
-          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-2">
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
             The Presence Penalty parameter in language model, on the other hand,
             controls how often the AI generates text related to the previous
             topic, or whether it shifts to a new topic. A positive value, say
@@ -119,7 +119,7 @@ const ConfigMenu = ({
             AI would be more likely to generate text related to the previous
             topic.
           </div>
-          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-2">
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
             For instance, if you set the Presence Penalty to 1.0, the AI may
             generate responses that are more likely to shift to a new topic,
             while if set to -1.0, it may generate responses that are more likely
@@ -127,11 +127,11 @@ const ConfigMenu = ({
           </div>
         </div>
         <div className="mt-5 pt-5 border-t border-gray-500">
-          <label className="block text-sm font-medium text-gray-900 dark:text-white">
+          <h2 className="block text-lg text-gray-900 dark:text-white">
             Guidelines for Modifying Language Model Parameters: Temperature and
             Presence Penalty
-          </label>
-          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-2">
+          </h2>
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
             Please be advised that the language model operates with pre-set
             default values for the Temperature and Presence Penalty parameters.
             While users may opt to adjust these values for the purpose of
@@ -139,7 +139,7 @@ const ConfigMenu = ({
             modify these default values unless the user has a significant level
             of experience in working with language models.
           </div>
-          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-2">
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
             Alterations to these values can cause the generated text output to
             become unpredictable and can potentially have an adverse effect on
             the quality and accuracy of the resulting text. Thus, it is strongly

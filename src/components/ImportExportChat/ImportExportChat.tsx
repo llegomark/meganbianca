@@ -19,7 +19,7 @@ const ImportExportChat = () => {
         }}
       >
         <ExportIcon className="w-4 h-4" />
-        Export Chat
+        Import/Export Chat
       </a>
       {isModalOpen && (
         <PopupModal
@@ -80,7 +80,7 @@ const ImportChat = () => {
   return (
     <>
       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-        Import (JSON)
+        Import (.json file)
       </label>
       <input
         className="w-full text-sm file:p-2 text-gray-800 file:text-gray-700 dark:text-gray-300 dark:file:text-gray-200 rounded-md cursor-pointer focus:outline-none bg-gray-50 file:bg-gray-100 dark:bg-gray-800 dark:file:bg-gray-700 file:border-0 border border-gray-300 dark:border-gray-600 placeholder-gray-900 dark:placeholder-gray-300 file:cursor-pointer"
@@ -122,7 +122,7 @@ const ExportChat = () => {
   return (
     <div className="mt-6">
       <div className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-        Export (JSON)
+        Export (.json file)
       </div>
       <button className="btn btn-small btn-primary" onClick={handleExport}>
         Export

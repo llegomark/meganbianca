@@ -133,13 +133,14 @@ const useSubmit = () => {
 
         const message: MessageInterface = {
           role: "user",
-          content: `Generate a <6-word title for this message:\nUser: ${user_message}\nAssistant: ${assistant_message}`,
+          content: `Generate a <6-word title using title case for this message:\nUser: ${user_message}\nAssistant: ${assistant_message}`,
         };
 
         let title = await generateTitle([message]);
         if (title.startsWith('"') && title.endsWith('"')) {
           title = title.slice(1, -1);
         }
+        // This code will replace all occurrences of double quotation marks in the title string with an empty string, effectively removing them.
         title = title.replace(/"/g, "");
         const updatedChats: ChatInterface[] = copyChats();
         updatedChats[currentChatIndex].title = title;

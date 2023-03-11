@@ -24,7 +24,7 @@ const RoleSelector = ({
 
   // Conditionally update the role name if the role is "assistant"
   if (role === "assistant") {
-    roleName = "Mark";
+    roleName = "Megan Bianca";
   }
 
   return (

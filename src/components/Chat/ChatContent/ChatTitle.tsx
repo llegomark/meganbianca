@@ -41,18 +41,18 @@ const ChatTitle = React.memo(() => {
   return config ? (
     <>
       <div
-        className="flex gap-4 flex-wrap w-full items-center justify-center border-b border-black/10 dark:border-gray-900/50 bg-gray-50 dark:bg-gray-700 p-3 text-gray-500 dark:text-gray-300 cursor-pointer rounded-md shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:shadow-[0_0_15px_rgba(0,0,0,0.10)]"
+        className="flex gap-4 flex-wrap w-full items-center justify-center border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-3 text-gray-500 dark:text-gray-400 cursor-pointer rounded-md shadow-md dark:shadow-lg"
         onClick={() => setIsModalOpen(true)}
       >
-        <div className="text-center p-1 rounded-md bg-gray-900/10 dark:bg-gray-900/50 hover:bg-gray-900/50 hover:text-white dark:hover:bg-gray-700/50 dark:hover:text-white border border-gray-900/10 dark:border-gray-900/50">
+        <div className="text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
           Model: GPT-3.5-Turbo
         </div>
 
-        <div className="hidden sm:block text-center p-1 rounded-md bg-gray-900/10 dark:bg-gray-900/50 hover:bg-gray-900/50 hover:text-white dark:hover:bg-gray-700/50 dark:hover:text-white border border-gray-900/10 dark:border-gray-900/50">
+        <div className="hidden sm:block text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
           Temperature: {config.temperature}
         </div>
 
-        <div className="hidden sm:block text-center p-1 rounded-md bg-gray-900/10 dark:bg-gray-900/50 hover:bg-gray-900/50 hover:text-white dark:hover:bg-gray-700/50 dark:hover:text-white border border-gray-900/10 dark:border-gray-900/50">
+        <div className="hidden sm:block text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
           Presence Penalty: {config.presence_penalty}
         </div>
       </div>
