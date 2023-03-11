@@ -71,7 +71,7 @@ const ApiMenu = ({
         {_apiFree && (
           <div className="mt-2 mb-6">
             <div className="text-sm text-gray-900 dark:text-gray-300 mb-2">
-              Default: https://api.meganchat.com/v1/
+              Default: https://chat.meganchat.com/v1/
             </div>
             <div className="flex gap-2 items-center justify-center">
               {/* <div className="min-w-fit text-gray-900 dark:text-gray-300 text-sm">

@@ -11,7 +11,7 @@ export interface AuthSlice {
 
 export const createAuthSlice: StoreSlice<AuthSlice> = (set, get) => ({
   apiFree: true,
-  apiFreeEndpoint: "https://api.meganchat.com/v1/",
+  apiFreeEndpoint: "https://chat.meganchat.com/v1/",
   setApiKey: (apiKey: string) => {
     set((prev: AuthSlice) => ({
       ...prev,
