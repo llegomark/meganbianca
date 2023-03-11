@@ -19,6 +19,11 @@ const RoleSelector = React.memo(
     const currentChatIndex = useStore((state) => state.currentChatIndex);
 
     const [dropDown, setDropDown] = useState<boolean>(false);
+    let roleName = role.charAt(0).toUpperCase() + role.slice(1);
+
+    if (role === "assistant") {
+      roleName = "Megan Bianca";
+    }
 
     return (
       <div className="prose dark:prose-invert relative">
@@ -27,7 +32,7 @@ const RoleSelector = React.memo(
           type="button"
           onClick={() => setDropDown((prev) => !prev)}
         >
-          {role.charAt(0).toUpperCase() + role.slice(1)}
+          {roleName}
           <DownChevronArrow />
         </button>
         <div
