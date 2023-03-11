@@ -52,10 +52,12 @@ Once dependencies are installed, you can start the application on any server or 
 npm start
 ```
 
-Note: The self-hosted installation of the ReactJS web application will not work with the API endpoint provided in the source code. Instead, you can refer to the worker-code folder inside the source code to see how to create your own API endpoint. Please note that detailed documentation on this is currently not available. However, you may find some information on how to create your own endpoint in the of the code files.
+Important Note: The API endpoint included in the web application's source code cannot be used with a self-hosted installation. As an alternative, please refer to the worker folder in the source code to learn how to create your own API endpoint. Please keep in mind that there is no comprehensive documentation available at the moment. However, you can find some information on how to create your own endpoint in the code files.
+
+Additionally, the docker folder includes a docker version of the application that you can utilize. You will also need to set up a MongoDB database either locally or by using MongoDB Atlas. To ensure a proper setup, please configure your environment variables accurately. Once you have completed these steps, you can deploy the Docker locally or on Google Cloud Run.
 
 ## Customization
 
-Currently, the self-hosted version of the ReactJS web application does not allow customization of the UI or branding. However, we are working to make it possible to set custom UI and branding in the future. Stay tuned for future updates.
+Currently, the self-hosted version of the web application does not allow customization of the UI or branding. However, we are working to make it possible to set custom UI and branding in the future. Stay tuned for future updates.
 
 Thank you for using our web application! If you have any questions or issues, please reach out to us through the issue tracker. Happy coding!
