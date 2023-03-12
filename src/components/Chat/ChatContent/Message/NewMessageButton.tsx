@@ -1,10 +1,10 @@
-import useStore from "@store/store";
-import React from "react";
+import useStore from '@store/store';
+import React from 'react';
 
-import PlusIcon from "@icon/PlusIcon";
+import PlusIcon from '@icon/PlusIcon';
 
-import { generateDefaultChat } from "@constants/chat";
-import { ChatInterface } from "@type/chat";
+import { generateDefaultChat } from '@constants/chat';
+import { ChatInterface } from '@type/chat';
 
 const NewMessageButton = React.memo(
   ({ messageIndex }: { messageIndex: number }) => {
@@ -38,8 +38,8 @@ const NewMessageButton = React.memo(
           JSON.stringify(useStore.getState().chats)
         );
         updatedChats[currentChatIndex].messages.splice(messageIndex + 1, 0, {
-          content: "",
-          role: "user",
+          content: '',
+          role: 'user',
         });
         setChats(updatedChats);
       }

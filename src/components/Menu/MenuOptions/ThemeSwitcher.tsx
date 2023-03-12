@@ -1,14 +1,14 @@
-import MoonIcon from "@icon/MoonIcon";
-import SunIcon from "@icon/SunIcon";
-import useStore from "@store/store";
-import { Theme } from "@type/theme";
-import { useEffect } from "react";
+import MoonIcon from '@icon/MoonIcon';
+import SunIcon from '@icon/SunIcon';
+import useStore from '@store/store';
+import { Theme } from '@type/theme';
+import { useEffect } from 'react';
 
 const getOppositeTheme = (theme: Theme): Theme => {
-  if (theme === "dark") {
-    return "light";
+  if (theme === 'dark') {
+    return 'light';
   } else {
-    return "dark";
+    return 'dark';
   }
 };
 const ThemeSwitcher = () => {
@@ -28,9 +28,9 @@ const ThemeSwitcher = () => {
       className="flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm"
       onClick={switchTheme}
     >
-      {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+      {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
       {getOppositeTheme(theme).charAt(0).toUpperCase() +
-        getOppositeTheme(theme).slice(1)}{" "}
+        getOppositeTheme(theme).slice(1)}{' '}
       Mode
     </a>
   ) : (

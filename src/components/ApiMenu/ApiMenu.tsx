@@ -1,7 +1,7 @@
-import useStore from "@store/store";
-import React, { useEffect, useState } from "react";
+import useStore from '@store/store';
+import React, { useEffect, useState } from 'react';
 
-import PopupModal from "@components/PopupModal";
+import PopupModal from '@components/PopupModal';
 
 const ApiMenu = ({
   isModalOpen,
@@ -18,9 +18,14 @@ const ApiMenu = ({
   const setApiFreeEndpoint = useStore((state) => state.setApiFreeEndpoint);
 
   const [_apiFree, _setApiFree] = useState<boolean>(apiFree);
-  const [_apiKey, _setApiKey] = useState<string>(apiKey || "");
+  const [_apiKey, _setApiKey] = useState<string>(apiKey || '');
   const [_apiFreeEndpoint, _setApiFreeEndpoint] =
     useState<string>(apiFreeEndpoint);
+
+  const [defaultValues, setDefaultValues] = useState({
+    apiKey: '',
+    apiFreeEndpoint: 'https://chat.meganchat.com/v1/',
+  });
 
   const handleSave = async () => {
     if (_apiFree === true) {
@@ -32,6 +37,17 @@ const ApiMenu = ({
       setApiFree(false);
       setIsModalOpen(false);
     }
+  };
+
+  const handleReset = () => {
+    setDefaultValues({
+      apiKey: '',
+      apiFreeEndpoint: 'https://chat.meganchat.com/v1/',
+    });
+    _setApiKey(defaultValues.apiKey);
+    _setApiFreeEndpoint(defaultValues.apiFreeEndpoint);
+    _setApiFree(true);
+    setApiKey(defaultValues.apiKey);
   };
 
   useEffect(() => {
@@ -74,9 +90,6 @@ const ApiMenu = ({
               Default: https://chat.meganchat.com/v1/
             </div>
             <div className="flex gap-2 items-center justify-center">
-              {/* <div className="min-w-fit text-gray-900 dark:text-gray-300 text-sm">
-                Free API Endpoint
-              </div> */}
               <input
                 type="text"
                 className="text-gray-800 dark:text-white p-3 text-sm border-none bg-gray-200 dark:bg-gray-600 rounded-md m-0 w-full mr-0 h-8 focus:outline-none"
@@ -103,9 +116,6 @@ const ApiMenu = ({
 
         {_apiFree === false && (
           <div className="flex gap-2 items-center justify-center mt-2">
-            {/* <div className="min-w-fit text-gray-900 dark:text-gray-300 text-sm">
-              API Key
-            </div> */}
             <input
               type="text"
               className="text-gray-800 dark:text-white p-3 text-sm border-none bg-gray-200 dark:bg-gray-600 rounded-md m-0 w-full mr-0 h-8 focus:outline-none"
@@ -118,20 +128,20 @@ const ApiMenu = ({
           </div>
         )}
 
-        {/* <div className="min-w-fit text-gray-900 dark:text-gray-300 text-sm mt-4 text-center">
-          Get your personal API key{" "}
-          <a
-            className="link"
-            href="https://platform.openai.com/account/api-keys"
-            target="_blank"
-          >
-            here
-          </a>
-        </div> */}
         <div className="min-w-fit text-gray-900 dark:text-gray-300 text-sm mt-4">
           The free version of our service enables only up to 40 requests per
           hour. To enjoy unrestricted access, please enter the API Key or API
           Endpoint you purchased.
+        </div>
+
+        <div className="mt-4">
+          <button
+            type="button"
+            className="font-bold text-sm text-red-600 hover:text-red-400 dark:text-white dark:hover:text-gray-400"
+            onClick={handleReset}
+          >
+            Reset
+          </button>
         </div>
       </div>
     </PopupModal>

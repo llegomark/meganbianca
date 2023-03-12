@@ -1,9 +1,9 @@
-import ConfigMenu from "@components/ConfigMenu";
-import { defaultChatConfig } from "@constants/chat";
-import useStore from "@store/store";
-import { ChatInterface, ConfigInterface } from "@type/chat";
-import React, { useEffect, useState } from "react";
-import { shallow } from "zustand/shallow";
+import ConfigMenu from '@components/ConfigMenu';
+import { defaultChatConfig } from '@constants/chat';
+import useStore from '@store/store';
+import { ChatInterface, ConfigInterface } from '@type/chat';
+import React, { useEffect, useState } from 'react';
+import { shallow } from 'zustand/shallow';
 
 const ChatTitle = React.memo(() => {
   const config = useStore(
@@ -41,18 +41,18 @@ const ChatTitle = React.memo(() => {
   return config ? (
     <>
       <div
-        className="flex gap-4 flex-wrap w-full items-center justify-center border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-3 text-gray-500 dark:text-gray-400 cursor-pointer rounded-md shadow-md dark:shadow-lg"
+        className="flex gap-2 flex-wrap w-full items-center justify-center border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-3 text-gray-500 dark:text-gray-400 cursor-pointer rounded-md shadow-md dark:shadow-lg"
         onClick={() => setIsModalOpen(true)}
       >
-        <div className="text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
+        <div className="text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
           Model: GPT-3.5-Turbo
         </div>
 
-        <div className="hidden sm:block text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
+        <div className="hidden sm:block text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
           Temperature: {config.temperature}
         </div>
 
-        <div className="hidden sm:block text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
+        <div className="hidden sm:block text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
           Presence Penalty: {config.presence_penalty}
         </div>
       </div>

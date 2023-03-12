@@ -1,16 +1,16 @@
-import PopupModal from "@components/PopupModal";
-import ImageIcon from "@icon/ImageIcon";
-import MarkdownIcon from "@icon/MarkdownIcon";
-import PdfIcon from "@icon/PdfIcon";
-import useStore from "@store/store";
+import PopupModal from '@components/PopupModal';
+import ImageIcon from '@icon/ImageIcon';
+import MarkdownIcon from '@icon/MarkdownIcon';
+import PdfIcon from '@icon/PdfIcon';
+import useStore from '@store/store';
 import {
   chatToMarkdown,
   downloadImg,
   downloadMarkdown,
   downloadPDF,
   htmlToImg,
-} from "@utils/chat";
-import React, { useState } from "react";
+} from '@utils/chat';
+import React, { useState } from 'react';
 
 const DownloadChat = React.memo(
   ({ saveRef }: { saveRef: React.RefObject<HTMLDivElement> }) => {
@@ -44,7 +44,7 @@ const DownloadChat = React.memo(
                           .getState()
                           .chats?.[
                             useStore.getState().currentChatIndex
-                          ].title.trim() ?? "download"
+                          ].title.trim() ?? 'download'
                       }.png`
                     );
                   }
@@ -66,7 +66,7 @@ const DownloadChat = React.memo(
                           .getState()
                           .chats?.[
                             useStore.getState().currentChatIndex
-                          ].title.trim() ?? "download"
+                          ].title.trim() ?? 'download'
                       }.pdf`
                     );
                   }
@@ -89,7 +89,7 @@ const DownloadChat = React.memo(
                         `${
                           chats[
                             useStore.getState().currentChatIndex
-                          ].title.trim() ?? "download"
+                          ].title.trim() ?? 'download'
                         }.md`
                       );
                     }

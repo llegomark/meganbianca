@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import CrossIcon2 from "@icon/CrossIcon2";
+import CrossIcon2 from '@icon/CrossIcon2';
 
 const PopupModal = ({
-  title = "Information",
+  title = 'Information',
   message,
   setIsModalOpen,
   handleConfirm,
@@ -20,7 +20,7 @@ const PopupModal = ({
   cancelButton?: boolean;
   children?: React.ReactElement;
 }) => {
-  const modalRoot = document.getElementById("modal-root");
+  const modalRoot = document.getElementById('modal-root');
 
   const _handleClose = () => {
     handleClose && handleClose();

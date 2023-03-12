@@ -1,32 +1,32 @@
-import useStore from "@store/store";
+import useStore from '@store/store';
 import React, {
   DetailedHTMLProps,
   HTMLAttributes,
   useEffect,
   useState,
-} from "react";
-import ReactMarkdown from "react-markdown";
-import { CodeProps, ReactMarkdownProps } from "react-markdown/lib/ast-to-react";
-import rehypeHighlight from "rehype-highlight";
-import rehypeKatex from "rehype-katex";
-import rehypeSanitize from "rehype-sanitize";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
+} from 'react';
+import ReactMarkdown from 'react-markdown';
+import { CodeProps, ReactMarkdownProps } from 'react-markdown/lib/ast-to-react';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeKatex from 'rehype-katex';
+import rehypeSanitize from 'rehype-sanitize';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 
-import CrossIcon from "@icon/CrossIcon";
-import DeleteIcon from "@icon/DeleteIcon";
-import DownChevronArrow from "@icon/DownChevronArrow";
-import EditIcon2 from "@icon/EditIcon2";
-import RefreshIcon from "@icon/RefreshIcon";
-import TickIcon from "@icon/TickIcon";
+import CrossIcon from '@icon/CrossIcon';
+import DeleteIcon from '@icon/DeleteIcon';
+import DownChevronArrow from '@icon/DownChevronArrow';
+import EditIcon2 from '@icon/EditIcon2';
+import RefreshIcon from '@icon/RefreshIcon';
+import TickIcon from '@icon/TickIcon';
 
-import useSubmit from "@hooks/useSubmit";
+import useSubmit from '@hooks/useSubmit';
 
-import { ChatInterface } from "@type/chat";
+import { ChatInterface } from '@type/chat';
 
-import PopupModal from "@components/PopupModal";
-import { codeLanguageSubset } from "@constants/chat";
-import CodeBlock from "./CodeBlock";
+import PopupModal from '@components/PopupModal';
+import { codeLanguageSubset } from '@constants/chat';
+import CodeBlock from './CodeBlock';
 
 const MessageContent = ({
   role,
@@ -91,13 +91,13 @@ const ContentView = React.memo(
       setChats(updatedChats);
     };
 
-    const handleMove = (direction: "up" | "down") => {
+    const handleMove = (direction: 'up' | 'down') => {
       const updatedChats: ChatInterface[] = JSON.parse(
         JSON.stringify(useStore.getState().chats)
       );
       const updatedMessages = updatedChats[currentChatIndex].messages;
       const temp = updatedMessages[messageIndex];
-      if (direction === "up") {
+      if (direction === 'up') {
         updatedMessages[messageIndex] = updatedMessages[messageIndex - 1];
         updatedMessages[messageIndex - 1] = temp;
       } else {
@@ -108,11 +108,11 @@ const ContentView = React.memo(
     };
 
     const handleMoveUp = () => {
-      handleMove("up");
+      handleMove('up');
     };
 
     const handleMoveDown = () => {
-      handleMove("down");
+      handleMove('down');
     };
 
     const handleRefresh = () => {
@@ -135,7 +135,7 @@ const ContentView = React.memo(
             ]}
             rehypePlugins={[
               rehypeSanitize,
-              [rehypeKatex, { output: "mathml" }],
+              [rehypeKatex, { output: 'mathml' }],
               [
                 rehypeHighlight,
                 {
@@ -157,7 +157,7 @@ const ContentView = React.memo(
         <div className="flex justify-end gap-2 w-full mt-2">
           {isDelete || (
             <>
-              {role === "assistant" && messageIndex === lastMessageIndex && (
+              {role === 'assistant' && messageIndex === lastMessageIndex && (
                 <RefreshButton onClick={handleRefresh} />
               )}
               {messageIndex !== 0 && <UpButton onClick={handleMoveUp} />}
@@ -190,13 +190,13 @@ const ContentView = React.memo(
 
 const code = React.memo((props: CodeProps) => {
   const { inline, className, children } = props;
-  const match = /language-(\w+)/.exec(className || "");
+  const match = /language-(\w+)/.exec(className || '');
   const lang = match && match[1];
 
   if (inline) {
     return <code className={className}>{children}</code>;
   } else {
-    return <CodeBlock lang={lang || "text"} codeChildren={children} />;
+    return <CodeBlock lang={lang || 'text'} codeChildren={children} />;
   }
 });
 
@@ -207,7 +207,7 @@ const p = React.memo(
         HTMLAttributes<HTMLParagraphElement>,
         HTMLParagraphElement
       >,
-      "ref"
+      'ref'
     > &
       ReactMarkdownProps
   ) => {
@@ -304,18 +304,18 @@ const EditView = ({
   const textareaRef = React.createRef<HTMLTextAreaElement>();
 
   const resetTextAreaHeight = () => {
-    if (textareaRef.current) textareaRef.current.style.height = "auto";
+    if (textareaRef.current) textareaRef.current.style.height = 'auto';
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${e.target.scrollHeight}px`;
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if ((e.ctrlKey || e.shiftKey) && e.key === "Enter") {
+    if ((e.ctrlKey || e.shiftKey) && e.key === 'Enter') {
       e.preventDefault();
       if (sticky) {
         handleSaveAndSubmit();
@@ -325,14 +325,14 @@ const EditView = ({
   };
 
   const handleSave = () => {
-    if (sticky && _content === "") return;
+    if (sticky && _content === '') return;
     const updatedChats: ChatInterface[] = JSON.parse(
       JSON.stringify(useStore.getState().chats)
     );
     const updatedMessages = updatedChats[currentChatIndex].messages;
     if (sticky) {
       updatedMessages.push({ role: inputRole, content: _content });
-      _setContent("");
+      _setContent('');
       resetTextAreaHeight();
     } else {
       updatedMessages[messageIndex].content = _content;
@@ -348,10 +348,10 @@ const EditView = ({
     );
     const updatedMessages = updatedChats[currentChatIndex].messages;
     if (sticky) {
-      if (_content !== "") {
+      if (_content !== '') {
         updatedMessages.push({ role: inputRole, content: _content });
       }
-      _setContent("");
+      _setContent('');
       resetTextAreaHeight();
     } else {
       updatedMessages[messageIndex].content = _content;
@@ -367,7 +367,7 @@ const EditView = ({
 
   useEffect(() => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, []);
@@ -377,8 +377,8 @@ const EditView = ({
       <div
         className={`w-full ${
           sticky
-            ? "py-2 md:py-3 px-2 md:px-4 border border-black/10 bg-white dark:border-gray-900/50 dark:text-white dark:bg-gray-700 rounded-md shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:shadow-[0_0_15px_rgba(0,0,0,0.10)]"
-            : ""
+            ? 'py-2 md:py-3 px-2 md:px-4 border border-black/10 bg-white dark:border-gray-900/50 dark:text-white dark:bg-gray-700 rounded-md shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:shadow-[0_0_15px_rgba(0,0,0,0.10)]'
+            : ''
         }`}
       >
         <textarea
@@ -440,7 +440,7 @@ const EditViewButtons = React.memo(
 
         <button
           className={`btn relative mr-2 ${
-            sticky ? "btn-neutral" : "btn-primary"
+            sticky ? 'btn-neutral' : 'btn-primary'
           }`}
           onClick={handleSave}
         >

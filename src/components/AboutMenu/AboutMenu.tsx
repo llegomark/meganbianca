@@ -1,7 +1,7 @@
-import PopupModal from "@components/PopupModal";
-import AboutIcon from "@icon/AboutIcon";
-import { useState } from "react";
-import Updates from "@components/Menu/MenuOptions/Updates";
+import PopupModal from '@components/PopupModal';
+import AboutIcon from '@icon/AboutIcon';
+import { useState } from 'react';
+import Updates from '@components/Menu/MenuOptions/Updates';
 
 const AboutMenu = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

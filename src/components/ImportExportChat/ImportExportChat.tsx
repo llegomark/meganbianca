@@ -1,11 +1,11 @@
-import useStore from "@store/store";
-import { useRef, useState } from "react";
+import useStore from '@store/store';
+import { useRef, useState } from 'react';
 
-import PopupModal from "@components/PopupModal";
-import ExportIcon from "@icon/ExportIcon";
-import { isChats } from "@utils/chat";
-import { getToday } from "@utils/date";
-import downloadFile from "@utils/downloadFile";
+import PopupModal from '@components/PopupModal';
+import ExportIcon from '@icon/ExportIcon';
+import { isChats } from '@utils/chat';
+import { getToday } from '@utils/date';
+import downloadFile from '@utils/downloadFile';
 
 const ImportExportChat = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -60,12 +60,12 @@ const ImportChat = () => {
           if (isChats(parsedData)) {
             setChats(parsedData);
             setAlert({
-              message: "Chat Messages Succesfully Imported!",
+              message: 'Chat Messages Succesfully Imported!',
               success: true,
             });
           } else {
             setAlert({
-              message: "Invalid Messages Data Format",
+              message: 'Invalid Messages Data Format',
               success: false,
             });
           }
@@ -97,8 +97,8 @@ const ImportChat = () => {
         <div
           className={`relative py-2 px-3 w-full mt-3 border rounded-md text-gray-600 dark:text-gray-100 text-sm whitespace-pre-wrap ${
             alert.success
-              ? "border-green-500 bg-green-500/10"
-              : "border-red-500 bg-red-500/10"
+              ? 'border-green-500 bg-green-500/10'
+              : 'border-red-500 bg-red-500/10'
           }`}
         >
           {alert.message}
@@ -114,7 +114,7 @@ const ExportChat = () => {
   const handleExport = () => {
     if (chats) {
       const randomNumber = Math.floor(Math.random() * 1000000);
-      const fileName = getToday() + "_" + randomNumber;
+      const fileName = getToday() + '_' + randomNumber;
       downloadFile(chats, fileName);
     }
   };

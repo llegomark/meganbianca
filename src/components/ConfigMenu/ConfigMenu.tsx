@@ -1,6 +1,6 @@
-import PopupModal from "@components/PopupModal";
-import { ConfigInterface } from "@type/chat";
-import React, { useState } from "react";
+import PopupModal from '@components/PopupModal';
+import { ConfigInterface } from '@type/chat';
+import React, { useState } from 'react';
 
 const ConfigMenu = ({
   setIsModalOpen,
@@ -124,6 +124,46 @@ const ConfigMenu = ({
             generate responses that are more likely to shift to a new topic,
             while if set to -1.0, it may generate responses that are more likely
             to stay on the same topic.
+          </div>
+          <h3 className="block text-lg  text-gray-900 dark:text-white mt-3">
+            Temperature Examples:
+          </h3>
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
+            If you ask an AI language model to complete the sentence "The sky is
+            ____", with a Temperature of 0.2, it may generate responses like
+            "The sky is blue" or "The sky is clear" as those are the most common
+            phrases it has seen before. But with a Temperature of 0.8, it may
+            generate responses like "The sky is an endless expanse of azure" or
+            "The sky is a canvas for the painterly clouds."
+          </div>
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
+            If you ask an AI language model to write a poem about love, with a
+            Temperature of 0.2, it may generate predictable phrases like "Love
+            is a rose" or "Love is like a flame." But with a Temperature of 0.8,
+            it may generate more unconventional and creative lines like "Love is
+            a thousand paper cranes taking flight" or "Love is a thunderstorm
+            brewing in the heart."
+          </div>
+          <h3 className="block text-lg  text-gray-900 dark:text-white mt-3">
+            Presence Penalty Examples:
+          </h3>
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
+            If you ask an AI language model to write a story about a detective,
+            with a Presence Penalty of -1.0, it may generate a story that
+            focuses heavily on the detective and their investigations, with
+            little deviation from the main plot. But with a Presence Penalty of
+            1.0, it may generate a story that introduces new characters,
+            locations, and plot twists, keeping the reader engaged and
+            interested in the story.
+          </div>
+          <div className="min-w-fit text-gray-500 dark:text-gray-300 text-sm mt-3">
+            If you ask an AI language model to generate a conversation about
+            pizza toppings, with a Presence Penalty of -1.0, it may generate a
+            conversation that repeatedly discusses the same toppings and doesn't
+            introduce new ideas. But with a Presence Penalty of 1.0, it may
+            generate a conversation that explores different pizza toppings and
+            even branches out into discussions about pizza crusts, sauces, and
+            cooking methods.
           </div>
         </div>
         <div className="mt-5 pt-5 border-t border-gray-500">

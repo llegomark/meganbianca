@@ -1,17 +1,17 @@
-import { LocalStorageInterface } from "@type/chat";
-import { create, StoreApi } from "zustand";
-import { persist } from "zustand/middleware";
-import { AuthSlice, createAuthSlice } from "./auth-slice";
-import { ChatSlice, createChatSlice } from "./chat-slice";
-import { ConfigSlice, createConfigSlice } from "./config-slice";
-import { createInputSlice, InputSlice } from "./input-slice";
-import { migrateV0 } from "./migrate";
+import { LocalStorageInterface } from '@type/chat';
+import { create, StoreApi } from 'zustand';
+import { persist } from 'zustand/middleware';
+import { AuthSlice, createAuthSlice } from './auth-slice';
+import { ChatSlice, createChatSlice } from './chat-slice';
+import { ConfigSlice, createConfigSlice } from './config-slice';
+import { createInputSlice, InputSlice } from './input-slice';
+import { migrateV0 } from './migrate';
 
 export type StoreState = ChatSlice & InputSlice & AuthSlice & ConfigSlice;
 
 export type StoreSlice<T> = (
-  set: StoreApi<StoreState>["setState"],
-  get: StoreApi<StoreState>["getState"]
+  set: StoreApi<StoreState>['setState'],
+  get: StoreApi<StoreState>['getState']
 ) => T;
 
 const useStore = create<StoreState>()(
@@ -23,7 +23,7 @@ const useStore = create<StoreState>()(
       ...createConfigSlice(set, get),
     }),
     {
-      name: "markllego",
+      name: 'markllego',
       partialize: (state) => ({
         chats: state.chats,
         currentChatIndex: state.currentChatIndex,

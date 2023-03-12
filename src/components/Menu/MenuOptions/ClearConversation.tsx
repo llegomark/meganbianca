@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import PopupModal from "@components/PopupModal";
-import useInitialiseNewChat from "@hooks/useInitialiseNewChat";
-import DeleteIcon from "@icon/DeleteIcon";
+import PopupModal from '@components/PopupModal';
+import useInitialiseNewChat from '@hooks/useInitialiseNewChat';
+import DeleteIcon from '@icon/DeleteIcon';
 
 const ClearConversation = () => {
   const initialiseNewChat = useInitialiseNewChat();

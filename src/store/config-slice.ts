@@ -1,5 +1,5 @@
-import { Theme } from "@type/theme";
-import { StoreSlice } from "./store";
+import { Theme } from '@type/theme';
+import { StoreSlice } from './store';
 
 export interface ConfigSlice {
   openConfig: boolean;
@@ -10,7 +10,7 @@ export interface ConfigSlice {
 
 export const createConfigSlice: StoreSlice<ConfigSlice> = (set, get) => ({
   openConfig: false,
-  theme: "dark",
+  theme: 'dark',
   setOpenConfig: (openConfig: boolean) => {
     set((prev: ConfigSlice) => ({
       ...prev,

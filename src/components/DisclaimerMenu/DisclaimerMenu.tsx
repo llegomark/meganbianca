@@ -1,6 +1,6 @@
-import PopupModal from "@components/PopupModal";
-import DisclaimerIcon from "@icon/DisclaimerIcon";
-import { useState } from "react";
+import PopupModal from '@components/PopupModal';
+import DisclaimerIcon from '@icon/DisclaimerIcon';
+import { useState } from 'react';
 
 const DisclaimerMenu = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -50,14 +50,16 @@ const DisclaimerMenu = () => {
                 Third-Party Services
               </h3>
               <p className="text-sm mb-3">
-                We use third-party services to improve the quality, speed, and
-                security of our website. We use Cloudflare for hosting, API
-                endpoints, analytics, site speed, and security. Cloudflare may
-                collect and use your personal data according to their own
-                privacy policies. We also use OpenAI for the AI language model
-                and Google Analytics to analyze user behavior and improve our
-                services. OpenAI and Google Analytics may collect and use your
-                personal data according to their own privacy policies.
+                As part of our ongoing efforts to enhance our website's quality,
+                speed, and security, we rely on third-party services. Our
+                website is hosted on Google Cloud, and we also use Cloudflare
+                for API endpoints, analytics, site speed, and security. Please
+                note that Cloudflare may collect and utilize your personal data
+                in accordance with their respective privacy policies. In
+                addition, we utilize OpenAI's AI language model and Google
+                Analytics to analyze user behavior and optimize our services.
+                Both OpenAI and Cloudflare Analytics may collect and utilize
+                your personal data subject to their own privacy policies.
               </p>
               <h3 className="text-base text-gray-900 dark:text-gray-300 font-bold mb-3">
                 Data Security

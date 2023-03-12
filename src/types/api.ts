@@ -6,7 +6,7 @@ export interface EventSourceDataInterface {
   object: string;
 }
 
-export type EventSourceData = EventSourceDataInterface | "[DONE]";
+export type EventSourceData = EventSourceDataInterface | '[DONE]';
 
 export interface EventSourceDataChoices {
   delta: {

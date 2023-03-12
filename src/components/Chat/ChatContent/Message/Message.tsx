@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import Avatar from "./Avatar";
-import MessageContent from "./MessageContent";
+import Avatar from './Avatar';
+import MessageContent from './MessageContent';
 
-import { Role } from "@type/chat";
-import RoleSelector from "./RoleSelector";
+import { Role } from '@type/chat';
+import RoleSelector from './RoleSelector';
 
-const backgroundStyle = ["dark:bg-gray-800", "bg-gray-50 dark:bg-[#444654]"];
+const backgroundStyle = ['dark:bg-gray-800', 'bg-gray-50 dark:bg-[#444654]'];
 
 const Message = React.memo(
   ({

@@ -1,4 +1,4 @@
-import LogoutIcon from "@icon/LogoutIcon";
+import LogoutIcon from '@icon/LogoutIcon';
 
 const Logout = () => {
   return (

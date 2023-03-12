@@ -1,8 +1,8 @@
-import useStore from "@store/store";
-import { useState } from "react";
+import useStore from '@store/store';
+import { useState } from 'react';
 
-import ApiMenu from "@components/ApiMenu";
-import PersonIcon from "@icon/PersonIcon";
+import ApiMenu from '@components/ApiMenu';
+import PersonIcon from '@icon/PersonIcon';
 
 const Config = () => {
   const apiFree = useStore((state) => state.apiFree);
@@ -15,7 +15,7 @@ const Config = () => {
         onClick={() => setIsModalOpen(true)}
       >
         <PersonIcon />
-        My Account: {apiFree ? "Free" : "Personal"}
+        My Account: {apiFree ? 'Free' : 'Personal'}
       </a>
       <ApiMenu isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>

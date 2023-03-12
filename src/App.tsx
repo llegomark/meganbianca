@@ -1,12 +1,12 @@
-import useStore from "@store/store";
-import { useEffect } from "react";
+import useStore from '@store/store';
+import { useEffect } from 'react';
 
-import Chat from "./components/Chat";
-import Menu from "./components/Menu";
+import Chat from './components/Chat';
+import Menu from './components/Menu';
 
-import useInitialiseNewChat from "@hooks/useInitialiseNewChat";
-import { ChatInterface } from "@type/chat";
-import { Theme } from "@type/theme";
+import useInitialiseNewChat from '@hooks/useInitialiseNewChat';
+import { ChatInterface } from '@type/chat';
+import { Theme } from '@type/theme';
 
 function App() {
   const initialiseNewChat = useInitialiseNewChat();
@@ -17,20 +17,20 @@ function App() {
 
   useEffect(() => {
     // legacy local storage
-    const oldChats = localStorage.getItem("chats");
-    const apiKey = localStorage.getItem("apiKey");
-    const theme = localStorage.getItem("theme");
+    const oldChats = localStorage.getItem('chats');
+    const apiKey = localStorage.getItem('apiKey');
+    const theme = localStorage.getItem('theme');
 
     if (apiKey) {
       // legacy local storage
       setApiKey(apiKey);
-      localStorage.removeItem("apiKey");
+      localStorage.removeItem('apiKey');
     }
 
     if (theme) {
       // legacy local storage
       setTheme(theme as Theme);
-      localStorage.removeItem("theme");
+      localStorage.removeItem('theme');
     }
 
     if (oldChats) {
@@ -47,7 +47,7 @@ function App() {
         console.log(e);
         initialiseNewChat();
       }
-      localStorage.removeItem("chats");
+      localStorage.removeItem('chats');
     } else {
       // existing local storage
       const chats = useStore.getState().chats;

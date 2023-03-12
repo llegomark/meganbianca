@@ -1,5 +1,5 @@
-import { MessageInterface } from "@type/chat";
-import countTokens from "./countTokens";
+import { MessageInterface } from '@type/chat';
+import countTokens from './countTokens';
 
 export const limitMessageTokens = (
   messages: MessageInterface[],

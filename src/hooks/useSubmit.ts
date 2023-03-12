@@ -1,16 +1,16 @@
 import {
   getChatCompletion as getChatCompletionCustom,
   getChatCompletionStream as getChatCompletionStreamCustom,
-} from "@api/customApi";
+} from '@api/customApi';
 import {
   getChatCompletion as getChatCompletionFree,
   getChatCompletionStream as getChatCompletionStreamFree,
-} from "@api/freeApi";
-import { parseEventSource } from "@api/helper";
-import { defaultChatConfig } from "@constants/chat";
-import useStore from "@store/store";
-import { ChatInterface, MessageInterface } from "@type/chat";
-import { limitMessageTokens } from "@utils/messageUtils";
+} from '@api/freeApi';
+import { parseEventSource } from '@api/helper';
+import { defaultChatConfig } from '@constants/chat';
+import useStore from '@store/store';
+import { ChatInterface, MessageInterface } from '@type/chat';
+import { limitMessageTokens } from '@utils/messageUtils';
 
 const copyChats = () => JSON.parse(JSON.stringify(useStore.getState().chats));
 
@@ -47,8 +47,8 @@ const useSubmit = () => {
     const updatedChats: ChatInterface[] = copyChats();
 
     updatedChats[currentChatIndex].messages.push({
-      role: "assistant",
-      content: "",
+      role: 'assistant',
+      content: '',
     });
 
     setChats(updatedChats);
@@ -62,7 +62,7 @@ const useSubmit = () => {
       );
       if (messages.length === 0)
         throw new Error(
-          "Please shorten your message as it has exceeded the maximum token limit."
+          'The message you submitted was too long, please reload the conversation and submit something shorter.'
         );
 
       if (apiFree) {
@@ -79,14 +79,14 @@ const useSubmit = () => {
         );
       } else {
         throw new Error(
-          "Please check your API settings as no API key has been provided."
+          'Please check your API settings as no API key has been provided.'
         );
       }
 
       if (stream) {
         if (stream.locked)
           throw new Error(
-            "Sorry, but the stream is currently locked. Please try again later."
+            'Sorry, but the stream is currently locked. Please try again later.'
           );
         const reader = stream.getReader();
         let reading = true;
@@ -95,17 +95,17 @@ const useSubmit = () => {
 
           const result = parseEventSource(new TextDecoder().decode(value));
 
-          if (result === "[DONE]" || done) {
+          if (result === '[DONE]' || done) {
             reading = false;
           } else {
             const resultString = result.reduce((output: string, curr) => {
-              if (typeof curr === "string") return output;
+              if (typeof curr === 'string') return output;
               else {
                 const content = curr.choices[0].delta.content;
                 if (content) output += content;
                 return output;
               }
-            }, "");
+            }, '');
 
             const updatedChats: ChatInterface[] = copyChats();
             const updatedMessages = updatedChats[currentChatIndex].messages;
@@ -114,9 +114,9 @@ const useSubmit = () => {
           }
         }
         if (useStore.getState().generating) {
-          reader.cancel("Cancelled by User");
+          reader.cancel('Cancelled by User');
         } else {
-          reader.cancel("Generation Completed");
+          reader.cancel('Generation Completed');
         }
         reader.releaseLock();
         stream.cancel();
@@ -132,7 +132,7 @@ const useSubmit = () => {
           currChats[currentChatIndex].messages[messages_length - 2].content;
 
         const message: MessageInterface = {
-          role: "user",
+          role: 'user',
           content: `Generate a <6-word title using title case for this message:\nUser: ${user_message}\nAssistant: ${assistant_message}`,
         };
 
@@ -141,7 +141,7 @@ const useSubmit = () => {
           title = title.slice(1, -1);
         }
         // This code will replace all occurrences of double quotation marks in the title string with an empty string, effectively removing them.
-        title = title.replace(/"/g, "");
+        title = title.replace(/"/g, '');
         const updatedChats: ChatInterface[] = copyChats();
         updatedChats[currentChatIndex].title = title;
         updatedChats[currentChatIndex].titleSet = true;
@@ -149,7 +149,13 @@ const useSubmit = () => {
       }
     } catch (e: unknown) {
       const err = (e as Error).message;
-      setError(err);
+      if (err.includes('Incorrect API key provided')) {
+        setError(
+          'Sorry, but the API key provided is incorrect. Please update your API key and try again.'
+        );
+      } else {
+        setError(err);
+      }
     }
     setGenerating(false);
   };

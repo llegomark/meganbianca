@@ -1,4 +1,4 @@
-import useStore from "@store/store";
+import useStore from '@store/store';
 
 const StopGeneratingButton = () => {
   const setGenerating = useStore((state) => state.setGenerating);

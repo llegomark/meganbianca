@@ -1,6 +1,6 @@
-import useAddChat from "@hooks/useAddChat";
-import PlusIcon from "@icon/PlusIcon";
-import useStore from "@store/store";
+import useAddChat from '@hooks/useAddChat';
+import PlusIcon from '@icon/PlusIcon';
+import useStore from '@store/store';
 
 const MobileBar = () => {
   const chatTitle = useStore((state) =>
@@ -9,7 +9,7 @@ const MobileBar = () => {
     state.currentChatIndex >= 0 &&
     state.currentChatIndex < state.chats.length
       ? state.chats[state.currentChatIndex].title
-      : "New Chat"
+      : 'New Chat'
   );
 
   const addChat = useAddChat();
@@ -21,10 +21,10 @@ const MobileBar = () => {
         className="-ml-0.5 -mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white dark:hover:text-white"
         onClick={() => {
           document
-            .getElementById("menu")
-            ?.classList.add("max-md:translate-x-[0%]");
-          document.getElementById("menu-close")?.classList.remove("hidden");
-          document.getElementById("menu-backdrop")?.classList.remove("hidden");
+            .getElementById('menu')
+            ?.classList.add('max-md:translate-x-[0%]');
+          document.getElementById('menu-close')?.classList.remove('hidden');
+          document.getElementById('menu-backdrop')?.classList.remove('hidden');
         }}
       >
         <span className="sr-only">Open Sidebar</span>

@@ -1,5 +1,5 @@
-import { ChatInterface, MessageInterface } from "@type/chat";
-import { StoreSlice } from "./store";
+import { ChatInterface, MessageInterface } from '@type/chat';
+import { StoreSlice } from './store';
 
 export interface ChatSlice {
   messages: MessageInterface[];
@@ -18,7 +18,7 @@ export const createChatSlice: StoreSlice<ChatSlice> = (set, get) => ({
   messages: [],
   currentChatIndex: -1,
   generating: false,
-  error: "",
+  error: '',
   setMessages: (messages: MessageInterface[]) => {
     set((prev: ChatSlice) => ({
       ...prev,

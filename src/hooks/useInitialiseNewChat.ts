@@ -1,5 +1,5 @@
-import { generateDefaultChat } from "@constants/chat";
-import useStore from "@store/store";
+import { generateDefaultChat } from '@constants/chat';
+import useStore from '@store/store';
 
 const useInitialiseNewChat = () => {
   const setChats = useStore((state) => state.setChats);

@@ -1,14 +1,14 @@
-import useStore from "@store/store";
-import React, { useEffect, useRef, useState } from "react";
-import { shallow } from "zustand/shallow";
+import useStore from '@store/store';
+import React, { useEffect, useRef, useState } from 'react';
+import { shallow } from 'zustand/shallow';
 
-import ChatIcon from "@icon/ChatIcon";
-import CrossIcon from "@icon/CrossIcon";
-import DeleteIcon from "@icon/DeleteIcon";
-import EditIcon from "@icon/EditIcon";
-import TickIcon from "@icon/TickIcon";
+import ChatIcon from '@icon/ChatIcon';
+import CrossIcon from '@icon/CrossIcon';
+import DeleteIcon from '@icon/DeleteIcon';
+import EditIcon from '@icon/EditIcon';
+import TickIcon from '@icon/TickIcon';
 
-import useInitialiseNewChat from "@hooks/useInitialiseNewChat";
+import useInitialiseNewChat from '@hooks/useInitialiseNewChat';
 
 const ChatHistoryList = () => {
   const currentChatIndex = useStore((state) => state.currentChatIndex);
@@ -54,13 +54,13 @@ const ShowMoreButton = () => {
 
 const ChatHistoryClass = {
   normal:
-    "flex py-3 px-3 items-center gap-3 relative rounded-md hover:bg-[#2A2B32] cursor-pointer break-all hover:pr-4 group",
+    'flex py-3 px-3 items-center gap-3 relative rounded-md hover:bg-[#2A2B32] cursor-pointer break-all hover:pr-4 group',
   active:
-    "flex py-3 px-3 items-center gap-3 relative rounded-md cursor-pointer break-all pr-14 bg-gray-800 hover:bg-gray-800 group",
+    'flex py-3 px-3 items-center gap-3 relative rounded-md cursor-pointer break-all pr-14 bg-gray-800 hover:bg-gray-800 group',
   normalGradient:
-    "absolute inset-y-0 right-0 w-8 z-10 bg-gradient-to-l from-gray-900 group-hover:from-[#2A2B32]",
+    'absolute inset-y-0 right-0 w-8 z-10 bg-gradient-to-l from-gray-900 group-hover:from-[#2A2B32]',
   activeGradient:
-    "absolute inset-y-0 right-0 w-8 z-10 bg-gradient-to-l from-gray-800",
+    'absolute inset-y-0 right-0 w-8 z-10 bg-gradient-to-l from-gray-800',
 };
 
 const ChatHistory = React.memo(

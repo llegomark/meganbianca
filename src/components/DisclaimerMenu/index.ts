@@ -1,1 +1,1 @@
-export { default } from "./DisclaimerMenu";
+export { default } from './DisclaimerMenu';

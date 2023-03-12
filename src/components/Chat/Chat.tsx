@@ -1,6 +1,6 @@
-import StopGeneratingButton from "@components/StopGeneratingButton/StopGeneratingButton";
-import MobileBar from "../MobileBar";
-import ChatContent from "./ChatContent";
+import StopGeneratingButton from '@components/StopGeneratingButton/StopGeneratingButton';
+import MobileBar from '../MobileBar';
+import ChatContent from './ChatContent';
 
 const Chat = () => {
   return (
