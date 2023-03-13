@@ -1,8 +1,6 @@
 import useStore from '@store/store';
 import React from 'react';
-
 import PlusIcon from '@icon/PlusIcon';
-
 import { generateDefaultChat } from '@constants/chat';
 import { ChatInterface } from '@type/chat';
 

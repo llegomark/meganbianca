@@ -1,7 +1,7 @@
+import Updates from '@components/Menu/MenuOptions/Updates';
 import PopupModal from '@components/PopupModal';
 import AboutIcon from '@icon/AboutIcon';
 import { useState } from 'react';
-import Updates from '@components/Menu/MenuOptions/Updates';
 
 const AboutMenu = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -43,26 +43,70 @@ const AboutMenu = () => {
                 responses that are informative and tailored to your needs.
               </p>
               <p className="text-sm mb-3">
-                Expert guidance on various topics: Whether you need help with
-                homework, writing an essay, or researching a topic, our AI
-                language model is here to provide expert guidance and support.
+                <span className="font-bold">
+                  Expert guidance on various topics:
+                </span>{' '}
+                Whether you need help with homework, writing an essay, or
+                researching a topic, our AI language model is here to provide
+                expert guidance and support.
               </p>
               <p className="text-sm mb-3">
-                Helpful responses: We strive to provide helpful responses to all
-                your queries. However, please note that the information provided
-                by the AI language model may not always be entirely accurate or
-                comprehensive. Therefore, we advise you to double-check the
-                information and use your own judgment before making any
-                decisions based on it.
+                <span className="font-bold">Helpful responses:</span> We strive
+                to provide helpful responses to all your queries. However,
+                please note that the information provided by the AI language
+                model may not always be entirely accurate or comprehensive.
+                Therefore, we advise you to double-check the information and use
+                your own judgment before making any decisions based on it.
               </p>
               <p className="text-sm mb-3">
-                Quick and efficient processing times: Our AI language model
-                processes your queries quickly and efficiently, providing you
-                with timely responses to your inquiries.
+                <span className="font-bold">
+                  Quick and efficient processing times:
+                </span>{' '}
+                Our AI language model processes your queries quickly and
+                efficiently, providing you with timely responses to your
+                inquiries.
               </p>
               <p className="text-sm mb-3">
-                24/7 availability: Our virtual assistant is available to assist
-                you 24/7, so you can get the help you need whenever you need it.
+                <span className="font-bold">24/7 availability:</span> Our
+                virtual assistant is available to assist you 24/7, so you can
+                get the help you need whenever you need it.
+              </p>
+              <p className="text-sm mb-3">
+                <span className="font-bold">
+                  Create and edit messages from multiple perspectives:
+                </span>{' '}
+                Our platform allows you to create and edit messages from
+                multiple perspectives, including the system, assistant, and
+                user. This feature makes it easier to maintain a coherent and
+                seamless conversation flow.
+              </p>
+              <p className="text-sm mb-3">
+                <span className="font-bold">Tweak model parameters:</span> With
+                our platform, you can tweak model parameters such as temperature
+                to achieve an unexpected outcome in your generated text.
+              </p>
+              <p className="text-sm mb-3">
+                <span className="font-bold">Customize message order:</span> You
+                also have the flexibility to change the order of messages to
+                suit your needs. You can add new messages in between old ones
+                for a seamless conversation flow.
+              </p>
+              <p className="text-sm mb-3">
+                <span className="font-bold">Automatic backing up:</span> Our
+                platform automatically backs up all chat history to your
+                browser's local storage, so you never have to worry about losing
+                your chat history.
+              </p>
+              <p className="text-sm mb-3">
+                <span className="font-bold">Import and export chat data:</span>{' '}
+                You can easily import and export chat data as a JSON file,
+                making it easy to transfer conversations between devices.
+              </p>
+              <p className="text-sm mb-3">
+                <span className="font-bold">Download chat log:</span> Lastly,
+                you can download your entire chat log as markdown, pdf, or
+                image, providing you with the flexibility to save your
+                conversations in your preferred format.
               </p>
               <h2 className="text-lg text-gray-900 dark:text-gray-300 font-bold mb-3">
                 Disclaimer

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-
 import CopyIcon from '@icon/CopyIcon';
 import TickIcon from '@icon/TickIcon';
 

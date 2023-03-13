@@ -1,6 +1,6 @@
 import useStore from '@store/store';
 import React, { useEffect, useState } from 'react';
-
+import { validateApiKey } from '@api/customApi';
 import PopupModal from '@components/PopupModal';
 
 const ApiMenu = ({
@@ -33,9 +33,16 @@ const ApiMenu = ({
       setApiFree(true);
       setIsModalOpen(false);
     } else {
-      setApiKey(_apiKey);
-      setApiFree(false);
-      setIsModalOpen(false);
+      const isValidApiKey = await validateApiKey(_apiKey);
+      if (isValidApiKey) {
+        setApiKey(_apiKey);
+        setApiFree(false);
+        setIsModalOpen(false);
+        window.alert('API key validation successful!');
+      } else {
+        alert('Invalid API Key');
+        return;
+      }
     }
   };
 

@@ -1,8 +1,6 @@
 import React from 'react';
-
 import Avatar from './Avatar';
 import MessageContent from './MessageContent';
-
 import { Role } from '@type/chat';
 import RoleSelector from './RoleSelector';
 

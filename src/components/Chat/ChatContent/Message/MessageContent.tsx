@@ -12,18 +12,14 @@ import rehypeKatex from 'rehype-katex';
 import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-
 import CrossIcon from '@icon/CrossIcon';
 import DeleteIcon from '@icon/DeleteIcon';
 import DownChevronArrow from '@icon/DownChevronArrow';
 import EditIcon2 from '@icon/EditIcon2';
 import RefreshIcon from '@icon/RefreshIcon';
 import TickIcon from '@icon/TickIcon';
-
 import useSubmit from '@hooks/useSubmit';
-
 import { ChatInterface } from '@type/chat';
-
 import PopupModal from '@components/PopupModal';
 import { codeLanguageSubset } from '@constants/chat';
 import CodeBlock from './CodeBlock';

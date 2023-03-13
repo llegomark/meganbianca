@@ -1,6 +1,5 @@
 import useStore from '@store/store';
 import React, { useState } from 'react';
-
 import DownChevronArrow from '@icon/DownChevronArrow';
 import { ChatInterface, Role, roles } from '@type/chat';
 

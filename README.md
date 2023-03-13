@@ -6,11 +6,40 @@ Welcome to our AI-powered virtual assistant that provides quick and accurate ass
 
 Here are some of the key features that make Megan Bianca stand out from other virtual assistants:
 
+### Core Functionality
+
+- Intelligent and sophisticated language model
+- Expert guidance on various topics
+- Helpful responses
+- Quick and efficient processing times
+- 24/7 availability
+
+### Conversation Control
+
+- Create and edit messages from multiple perspectives (system / assistant / user)
+- Tweak model parameters such as temperature to achieve an unexpected outcome
+- Change the order of messages to suit your needs
+- Add new messages in between old ones for a seamless conversation flow
+
+### Data Management
+
+- Automatic backup of all chat history to browser's local storage
+- Import and export of chat data as a JSON file
+- Download entire chat log as markdown, pdf or image
+
+### Detailed Features
+
 - Intelligent and sophisticated language model: Our AI language model is designed to understand your queries and provide helpful responses that are informative and tailored to your needs.
 - Expert guidance on various topics: Whether you need help with homework, writing an essay, or researching a topic, our AI language model is here to provide expert guidance and support.
 - Helpful responses: We strive to provide helpful responses to all your queries. However, please note that the information provided by the AI language model may not always be entirely accurate or comprehensive. Therefore, we advise you to double-check the information and use your own judgment before making any decisions based on it.
 - Quick and efficient processing times: Our AI language model processes your queries quickly and efficiently, providing you with timely responses to your inquiries.
 - 24/7 availability: Our virtual assistant is available to assist you 24/7, so you can get the help you need whenever you need it.
+- Create and edit messages from multiple perspectives: Our platform allows you to create and edit messages from multiple perspectives, including the system, assistant, and user. This feature makes it easier to maintain a coherent and seamless conversation flow.
+- Tweak model parameters: With our platform, you can tweak model parameters such as temperature to achieve an unexpected outcome in your generated text.
+- Customize message order: You also have the flexibility to change the order of messages to suit your needs. You can add new messages in between old ones for a seamless conversation flow.
+- Automatic backing up: Our platform automatically backs up all chat history to your browser's local storage, so you never have to worry about losing your chat history.
+- Import and export chat data: You can easily import and export chat data as a JSON file, making it easy to transfer conversations between devices.
+- Download chat log: Lastly, you can download your entire chat log as markdown, pdf, or image, providing you with the flexibility to save your conversations in your preferred format.
 
 ## Usage
 

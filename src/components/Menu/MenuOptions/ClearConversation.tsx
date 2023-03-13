@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import PopupModal from '@components/PopupModal';
 import useInitialiseNewChat from '@hooks/useInitialiseNewChat';
 import DeleteIcon from '@icon/DeleteIcon';

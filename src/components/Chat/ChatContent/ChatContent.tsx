@@ -1,13 +1,11 @@
 import useStore from '@store/store';
 import React, { useEffect, useRef } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
-
 import CrossIcon from '@icon/CrossIcon';
 import ChatTitle from './ChatTitle';
 import Message from './Message';
 import NewMessageButton from './Message/NewMessageButton';
 import ScrollToBottomButton from './ScrollToBottomButton';
-
 import useSubmit from '@hooks/useSubmit';
 import DownloadChat from './DownloadChat';
 

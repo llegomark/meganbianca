@@ -1,4 +1,3 @@
-import React from 'react';
 import LinkIcon from '@icon/LinkIcon';
 
 const Updates = ({ isButton = false }: { isButton?: boolean }) => {

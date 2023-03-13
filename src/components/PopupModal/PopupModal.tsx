@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import CrossIcon2 from '@icon/CrossIcon2';
 
 const PopupModal = ({

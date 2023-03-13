@@ -1,9 +1,7 @@
 import useStore from '@store/store';
 import { useEffect } from 'react';
-
 import Chat from './components/Chat';
 import Menu from './components/Menu';
-
 import useInitialiseNewChat from '@hooks/useInitialiseNewChat';
 import { ChatInterface } from '@type/chat';
 import { Theme } from '@type/theme';
