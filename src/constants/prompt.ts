@@ -161,7 +161,8 @@ const defaultPrompts: Prompt[] = [
   {
     id: '9c4d5b38-efc4-4f7b-9a3b-7de36593f638',
     name: 'Debate Coach',
-    prompt: '',
+    prompt:
+      'I want you to act as a debate coach. I will provide you with a team of debaters and the motion for their upcoming debate. Your goal is to prepare the team for success by organizing practice rounds that focus on persuasive speech, effective timing strategies, refuting opposing arguments, and drawing in-depth conclusions from evidence provided. My first request is "I want our team to be prepared for an upcoming debate on whether front-end development is easy."',
   },
   {
     id: '0e1c0f7b-29a2-4610-8fb3-3e66b3e27c12',

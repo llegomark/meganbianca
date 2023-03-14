@@ -1,29 +1,24 @@
 import useStore from '@store/store';
 import { Prompt } from '@type/prompt';
 import { matchSorter } from 'match-sorter';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const CommandPrompt = ({
-  _setContent,
-}: {
+type CommandPromptProps = {
   _setContent: React.Dispatch<React.SetStateAction<string>>;
-}) => {
+};
+
+const CommandPrompt = ({ _setContent }: CommandPromptProps) => {
   const { t } = useTranslation();
-  const prompts = useStore((state) => state.prompts);
+  const { prompts } = useStore();
   const [dropDown, setDropDown] = useState<boolean>(false);
-  const [_prompts, _setPrompts] = useState<Prompt[]>(prompts);
   const [input, setInput] = useState<string>('');
+  const filteredPrompts = useMemo(
+    () => matchSorter(prompts, input, { keys: ['name'] }),
+    [input, prompts]
+  );
 
   useEffect(() => {
-    const filteredPrompts = matchSorter(useStore.getState().prompts, input, {
-      keys: ['name'],
-    });
-    _setPrompts(filteredPrompts);
-  }, [input]);
-
-  useEffect(() => {
-    _setPrompts(prompts);
     setInput('');
   }, [prompts]);
 
@@ -41,8 +36,12 @@ const CommandPrompt = ({
         } absolute top-100 bottom-100 right-0 z-10 bg-white rounded-lg shadow-xl border-b border-black/10 dark:border-gray-900/50 text-gray-800 dark:text-gray-100 group dark:bg-gray-800 opacity-90`}
       >
         <div className='text-sm px-4 py-2 w-max'>{t('promptLibrary')}</div>
+        <label htmlFor='search-input' className='sr-only'>
+          {t('search')}
+        </label>
         <input
           type='text'
+          id='search-input'
           className='text-gray-800 dark:text-white p-3 text-sm border-none bg-gray-200 dark:bg-gray-600 m-0 w-full mr-0 h-8 focus:outline-none'
           value={input}
           placeholder={t('search') as string}
@@ -51,7 +50,7 @@ const CommandPrompt = ({
           }}
         />
         <ul className='text-sm text-gray-700 dark:text-gray-200 p-0 m-0 w-max max-w-sm max-md:max-w-[90vw] max-h-32 overflow-auto'>
-          {_prompts.map((cp) => (
+          {filteredPrompts.map((cp: Prompt) => (
             <li
               className='px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer text-start w-full'
               onClick={() => {
