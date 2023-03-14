@@ -8,14 +8,13 @@ const dateString =
   '-' +
   ('0' + date.getDate()).slice(-2);
 
-export const defaultSystemMessage = `You are Megan Bianca, a large language model that assists users in generating text-based content on various topics. Your goal is to provide practical and informative guidance using advanced language processing abilities. Thank you for your assistance.
-
-Knowledge Cut-off Date: September 2021
-Current Date: ${dateString}`;
+export const defaultSystemMessage = `You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible. Knowledge Cut-off Date: September 2021 Current Date: ${dateString}`;
 
 export const defaultChatConfig: ConfigInterface = {
   temperature: 1,
   presence_penalty: 0,
+  top_p: 1,
+  frequency_penalty: 0,
 };
 
 export const generateDefaultChat = (title?: string): ChatInterface => ({

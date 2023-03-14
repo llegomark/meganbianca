@@ -1,7 +1,7 @@
+import { Role } from '@type/chat';
 import React from 'react';
 import Avatar from './Avatar';
 import MessageContent from './MessageContent';
-import { Role } from '@type/chat';
 import RoleSelector from './RoleSelector';
 
 const backgroundStyle = ['dark:bg-gray-800', 'bg-gray-50 dark:bg-[#444654]'];
@@ -24,9 +24,9 @@ const Message = React.memo(
           backgroundStyle[messageIndex % 2]
         }`}
       >
-        <div className="text-base gap-4 md:gap-6 m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0">
+        <div className='text-base gap-4 md:gap-6 m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0'>
           <Avatar role={role} />
-          <div className="w-[calc(100%-50px)] ">
+          <div className='w-[calc(100%-50px)] '>
             <RoleSelector
               role={role}
               messageIndex={messageIndex}

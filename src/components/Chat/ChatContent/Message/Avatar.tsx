@@ -5,7 +5,7 @@ import React from 'react';
 
 const Avatar = React.memo(({ role }: { role: Role }) => {
   return (
-    <div className="w-[30px] flex flex-col relative items-end">
+    <div className='w-[30px] flex flex-col relative items-end'>
       {role === 'user' && <UserAvatar />}
       {role === 'assistant' && <AssistantAvatar />}
       {role === 'system' && <SystemAvatar />}
@@ -16,7 +16,7 @@ const Avatar = React.memo(({ role }: { role: Role }) => {
 const UserAvatar = () => {
   return (
     <div
-      className="relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center"
+      className='relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center'
       style={{ backgroundColor: 'rgb(204, 85, 119)' }}
     >
       <PersonLargeIcon />
@@ -27,7 +27,7 @@ const UserAvatar = () => {
 const AssistantAvatar = () => {
   return (
     <div
-      className="relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center"
+      className='relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center'
       style={{
         backgroundImage: "url('/meganprofilepic.png')",
         backgroundSize: 'cover',
@@ -40,7 +40,7 @@ const AssistantAvatar = () => {
 const SystemAvatar = () => {
   return (
     <div
-      className="relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center"
+      className='relative h-[30px] w-[30px] p-1 rounded-sm text-white flex items-center justify-center'
       style={{ backgroundColor: 'rgb(16, 163, 127)' }}
     >
       <OpenAIIcon />

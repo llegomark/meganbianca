@@ -1,18 +1,9 @@
-import {
-  getChatCompletion as getChatCompletionCustom,
-  getChatCompletionStream as getChatCompletionStreamCustom,
-} from '@api/customApi';
-import {
-  getChatCompletion as getChatCompletionFree,
-  getChatCompletionStream as getChatCompletionStreamFree,
-} from '@api/freeApi';
+import { getChatCompletion, getChatCompletionStream } from '@api/api';
 import { parseEventSource } from '@api/helper';
 import { defaultChatConfig } from '@constants/chat';
 import useStore from '@store/store';
 import { ChatInterface, MessageInterface } from '@type/chat';
 import { limitMessageTokens } from '@utils/messageUtils';
-
-const copyChats = () => JSON.parse(JSON.stringify(useStore.getState().chats));
 
 const useSubmit = () => {
   const error = useStore((state) => state.error);
@@ -29,13 +20,18 @@ const useSubmit = () => {
   ): Promise<string> => {
     let data;
     if (apiFree) {
-      data = await getChatCompletionFree(
-        useStore.getState().apiFreeEndpoint,
+      data = await getChatCompletion(
+        useStore.getState().apiEndpoint,
         message,
         defaultChatConfig
       );
     } else if (apiKey) {
-      data = await getChatCompletionCustom(apiKey, message, defaultChatConfig);
+      data = await getChatCompletion(
+        useStore.getState().apiEndpoint,
+        message,
+        defaultChatConfig,
+        apiKey
+      );
     }
     return data.choices[0].message.content;
   };
@@ -44,7 +40,7 @@ const useSubmit = () => {
     const chats = useStore.getState().chats;
     if (generating || !chats) return;
 
-    const updatedChats: ChatInterface[] = copyChats();
+    const updatedChats: ChatInterface[] = JSON.parse(JSON.stringify(chats));
 
     updatedChats[currentChatIndex].messages.push({
       role: 'assistant',
@@ -66,16 +62,17 @@ const useSubmit = () => {
         );
 
       if (apiFree) {
-        stream = await getChatCompletionStreamFree(
-          useStore.getState().apiFreeEndpoint,
+        stream = await getChatCompletionStream(
+          useStore.getState().apiEndpoint,
           messages,
           chats[currentChatIndex].config
         );
       } else if (apiKey) {
-        stream = await getChatCompletionStreamCustom(
-          apiKey,
+        stream = await getChatCompletionStream(
+          useStore.getState().apiEndpoint,
           messages,
-          chats[currentChatIndex].config
+          chats[currentChatIndex].config,
+          apiKey
         );
       } else {
         throw new Error(
@@ -107,7 +104,9 @@ const useSubmit = () => {
               }
             }, '');
 
-            const updatedChats: ChatInterface[] = copyChats();
+            const updatedChats: ChatInterface[] = JSON.parse(
+              JSON.stringify(useStore.getState().chats)
+            );
             const updatedMessages = updatedChats[currentChatIndex].messages;
             updatedMessages[updatedMessages.length - 1].content += resultString;
             setChats(updatedChats);
@@ -124,7 +123,11 @@ const useSubmit = () => {
 
       // generate title for new chats
       const currChats = useStore.getState().chats;
-      if (currChats && !currChats[currentChatIndex]?.titleSet) {
+      if (
+        useStore.getState().autoTitle &&
+        currChats &&
+        !currChats[currentChatIndex]?.titleSet
+      ) {
         const messages_length = currChats[currentChatIndex].messages.length;
         const assistant_message =
           currChats[currentChatIndex].messages[messages_length - 1].content;
@@ -136,26 +139,23 @@ const useSubmit = () => {
           content: `Generate a <6-word title using title case for this message:\nUser: ${user_message}\nAssistant: ${assistant_message}`,
         };
 
-        let title = await generateTitle([message]);
+        let title = (await generateTitle([message])).trim();
         if (title.startsWith('"') && title.endsWith('"')) {
           title = title.slice(1, -1);
         }
         // This code will replace all occurrences of double quotation marks in the title string with an empty string, effectively removing them.
         title = title.replace(/"/g, '');
-        const updatedChats: ChatInterface[] = copyChats();
+        const updatedChats: ChatInterface[] = JSON.parse(
+          JSON.stringify(useStore.getState().chats)
+        );
         updatedChats[currentChatIndex].title = title;
         updatedChats[currentChatIndex].titleSet = true;
         setChats(updatedChats);
       }
     } catch (e: unknown) {
       const err = (e as Error).message;
-      if (err.includes('Incorrect API key provided')) {
-        setError(
-          'Sorry, but the API key provided is incorrect. Please update your API key and try again.'
-        );
-      } else {
-        setError(err);
-      }
+      console.log(err);
+      setError(err);
     }
     setGenerating(false);
   };

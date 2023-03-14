@@ -1,0 +1,23 @@
+{
+  "description": "At Megan Chat, we take your privacy seriously and are committed to protecting it. This privacy notice explains how we collect, use, and safeguard your personal data when you use our services.",
+  "datacollection": {
+    "title": "Data Collection and Use",
+    "paragraph1": "We do not collect or store any text that you enter or receive from our server in any form. All conversations you have with our AI language model, which is powered by OpenAI, are exclusively stored on your local web browser and are not saved anywhere else. We do not have access to any of your conversations or personal data."
+  },
+  "thirdparty": {
+    "title": "Third-Party Services",
+    "paragraph1": "As part of our ongoing efforts to enhance our website's quality, speed, and security, we rely on third-party services. Our website is hosted on Google Cloud, and we also use Cloudflare for API endpoints, analytics, site speed, and security. Please note that Cloudflare may collect and utilize your personal data in accordance with their respective privacy policies. In addition, we utilize OpenAI's AI language model and Google Analytics to analyze user behavior and optimize our services. Both OpenAI and Cloudflare Analytics may collect and utilize your personal data subject to their own privacy policies."
+  },
+  "datasecurity": {
+    "title": "Data Security",
+    "paragraph1": "We have implemented appropriate technical and organizational measures to safeguard your personal data from unauthorized access, use, or disclosure. However, please note that no data transmission over the internet can be guaranteed to be 100% secure, and we cannot guarantee the security of any information you provide to us."
+  },
+  "changes": {
+    "title": "Changes to this Privacy Notice",
+    "paragraph1": "We reserve the right to update or change this privacy notice at any time without prior notice. We encourage you to review this notice periodically to stay informed about our data collection and use practices."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "paragraph1": "If you have any questions or concerns about our privacy practices, please contact us at markllego@gmail.com."
+  }
+}

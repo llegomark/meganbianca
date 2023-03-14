@@ -26,8 +26,8 @@ const ChatHistoryList = () => {
   }, [currentChatIndex, chatTitles]);
 
   return (
-    <div className="flex-col flex-1 overflow-y-auto border-b border-white/20">
-      <div className="flex flex-col gap-2 text-gray-100 text-sm">
+    <div className='flex-col flex-1 overflow-y-auto border-b border-white/20'>
+      <div className='flex flex-col gap-2 text-gray-100 text-sm'>
         {chatTitles &&
           chatTitles.map((title, index) => (
             <ChatHistory
@@ -113,11 +113,11 @@ const ChatHistory = React.memo<{ title: string; chatIndex: number }>(
         }}
       >
         <ChatIcon />
-        <div className="flex-1 text-ellipsis max-h-5 overflow-hidden break-all relative">
+        <div className='flex-1 text-ellipsis max-h-5 overflow-hidden break-all relative'>
           {action === 'edit' ? (
             <input
-              type="text"
-              className="focus:outline-blue-600 text-sm border-none bg-transparent p-0 m-0 w-full"
+              type='text'
+              className='focus:outline-blue-600 text-sm border-none bg-transparent p-0 m-0 w-full'
               value={_title}
               onChange={(e) => {
                 _setTitle(e.target.value);
@@ -139,26 +139,26 @@ const ChatHistory = React.memo<{ title: string; chatIndex: number }>(
           )}
         </div>
         {active && (
-          <div className="absolute flex right-1 z-10 text-gray-300 visible">
+          <div className='absolute flex right-1 z-10 text-gray-300 visible'>
             {action === 'delete' || action === 'edit' ? (
               <>
-                <button className="p-1 hover:text-white" onClick={handleTick}>
+                <button className='p-1 hover:text-white' onClick={handleTick}>
                   <TickIcon />
                 </button>
-                <button className="p-1 hover:text-white" onClick={handleCross}>
+                <button className='p-1 hover:text-white' onClick={handleCross}>
                   <CrossIcon />
                 </button>
               </>
             ) : (
               <>
                 <button
-                  className="p-1 hover:text-white"
+                  className='p-1 hover:text-white'
                   onClick={() => setAction('edit')}
                 >
                   <EditIcon />
                 </button>
                 <button
-                  className="p-1 hover:text-white"
+                  className='p-1 hover:text-white'
                   onClick={() => setAction('delete')}
                 >
                   <DeleteIcon />

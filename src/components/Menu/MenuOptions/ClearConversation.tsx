@@ -1,9 +1,12 @@
-import { useState } from 'react';
 import PopupModal from '@components/PopupModal';
 import useInitialiseNewChat from '@hooks/useInitialiseNewChat';
 import DeleteIcon from '@icon/DeleteIcon';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ClearConversation = () => {
+  const { t } = useTranslation();
+
   const initialiseNewChat = useInitialiseNewChat();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -15,19 +18,19 @@ const ClearConversation = () => {
   return (
     <>
       <a
-        className="flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm"
+        className='flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm'
         onClick={() => {
           setIsModalOpen(true);
         }}
       >
         <DeleteIcon />
-        Clear Conversations
+        {t('clearConversation')}
       </a>
       {isModalOpen && (
         <PopupModal
           setIsModalOpen={setIsModalOpen}
-          title="Heads Up!"
-          message="By confirming this action, please be aware that all messages will be deleted."
+          title={t('warning') as string}
+          message={t('clearConversationWarning') as string}
           handleConfirm={handleConfirm}
         />
       )}

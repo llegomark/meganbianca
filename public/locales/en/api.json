@@ -1,0 +1,14 @@
+{
+  "securityMessage": "We place utmost importance on keeping your API key secure and handle it with great care. Your key is only stored on your browser and we never share it with anyone outside our organization. We only use it for its intended purpose, which is to access the OpenAI API, and not for any unauthorized activities.",
+  "apiEndpoint": {
+    "option": "Use Megan Chat for Free",
+    "inputLabel": "API Endpoint",
+    "description": "The free version of our service enables only up to 40 requests per hour. To enjoy unrestricted access, please enter your own API Key or custom API Endpoint."
+  },
+  "apiKey": {
+    "option": "Use Your Own API Key",
+    "howTo": "To get your personal API key, please click on <0>here</0>. Please note that billing information will be required as charges may apply.",
+    "inputLabel": "API Key"
+  },
+  "customEndpoint": "Use Your Own Custom API Endpoint"
+}

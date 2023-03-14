@@ -1,11 +1,11 @@
 import LinkIcon from '@icon/LinkIcon';
 
-const Updates = ({ isButton = false }: { isButton?: boolean }) => {
+const GitHub = ({ isButton = false }: { isButton?: boolean }) => {
   return (
     <a
-      href="https://github.com/llegomark/meganbianca"
-      target="_blank"
-      rel="noopener noreferrer"
+      href='https://github.com/llegomark/meganbianca'
+      target='_blank'
+      rel='noopener noreferrer'
       className={
         isButton
           ? 'flex py-3 px-3 items-center gap-3 transition-colors duration-200 btn btn-neutral text-sm justify-center'
@@ -18,4 +18,4 @@ const Updates = ({ isButton = false }: { isButton?: boolean }) => {
   );
 };
 
-export default Updates;
+export default GitHub;

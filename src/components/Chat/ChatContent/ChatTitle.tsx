@@ -3,9 +3,11 @@ import { defaultChatConfig } from '@constants/chat';
 import useStore from '@store/store';
 import { ChatInterface, ConfigInterface } from '@type/chat';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { shallow } from 'zustand/shallow';
 
 const ChatTitle = React.memo(() => {
+  const { t } = useTranslation('model');
   const config = useStore(
     (state) =>
       state.chats &&
@@ -41,19 +43,25 @@ const ChatTitle = React.memo(() => {
   return config ? (
     <>
       <div
-        className="flex gap-2 flex-wrap w-full items-center justify-center border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-3 text-gray-500 dark:text-gray-400 cursor-pointer rounded-md shadow-md dark:shadow-lg"
-        onClick={() => setIsModalOpen(true)}
+        className='flex gap-x-4 gap-y-1 flex-wrap w-full items-center justify-center border-b border-black/10 bg-gray-50 p-3 text-gray-500 dark:border-gray-900/50 dark:bg-gray-700 dark:text-gray-300 cursor-pointer'
+        onClick={() => {
+          setIsModalOpen(true);
+        }}
       >
-        <div className="text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
-          Model: GPT-3.5-Turbo
+        <div className='text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100'>
+          {t('model')}: {t('default')}
         </div>
-
-        <div className="hidden sm:block text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
-          Temperature: {config.temperature}
+        <div className='hidden sm:block text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100'>
+          {t('temperature.label')}: {config.temperature}
         </div>
-
-        <div className="hidden sm:block text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100">
-          Presence Penalty: {config.presence_penalty}
+        <div className='hidden sm:block text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100'>
+          {t('topP.label')}: {config.top_p}
+        </div>
+        <div className='hidden sm:block text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100'>
+          {t('presencePenalty.label')}: {config.presence_penalty}
+        </div>
+        <div className='hidden sm:block text-xs text-center p-1 rounded-md bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-900 hover:text-gray-900 dark:hover:text-gray-100'>
+          {t('frequencyPenalty.label')}: {config.frequency_penalty}
         </div>
       </div>
       {isModalOpen && (

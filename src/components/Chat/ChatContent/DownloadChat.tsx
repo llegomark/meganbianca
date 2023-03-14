@@ -11,29 +11,31 @@ import {
   htmlToImg,
 } from '@utils/chat';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const DownloadChat = React.memo(
   ({ saveRef }: { saveRef: React.RefObject<HTMLDivElement> }) => {
+    const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     return (
       <>
         <button
-          className="btn btn-neutral"
+          className='btn btn-neutral'
           onClick={() => {
             setIsModalOpen(true);
           }}
         >
-          Download Chat
+          {t('downloadChat')}
         </button>
         {isModalOpen && (
           <PopupModal
             setIsModalOpen={setIsModalOpen}
-            title="Download Chat Messages"
+            title={t('downloadChat') as string}
             cancelButton={false}
           >
-            <div className="p-6 border-b border-gray-200 dark:border-gray-600 flex gap-4">
+            <div className='p-6 border-b border-gray-200 dark:border-gray-600 flex gap-4'>
               <button
-                className="btn btn-neutral gap-2"
+                className='btn btn-neutral gap-2'
                 onClick={async () => {
                   if (saveRef && saveRef.current) {
                     const imgData = await htmlToImg(saveRef.current);
@@ -54,7 +56,7 @@ const DownloadChat = React.memo(
                 Image
               </button>
               <button
-                className="btn btn-neutral gap-2"
+                className='btn btn-neutral gap-2'
                 onClick={async () => {
                   if (saveRef && saveRef.current) {
                     const imgData = await htmlToImg(saveRef.current);
@@ -76,7 +78,7 @@ const DownloadChat = React.memo(
                 PDF
               </button>
               <button
-                className="btn btn-neutral gap-2"
+                className='btn btn-neutral gap-2'
                 onClick={async () => {
                   if (saveRef && saveRef.current) {
                     const chats = useStore.getState().chats;

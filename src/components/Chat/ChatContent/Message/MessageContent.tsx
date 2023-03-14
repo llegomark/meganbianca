@@ -1,10 +1,21 @@
+import PopupModal from '@components/PopupModal';
+import { codeLanguageSubset } from '@constants/chat';
+import useSubmit from '@hooks/useSubmit';
+import CrossIcon from '@icon/CrossIcon';
+import DeleteIcon from '@icon/DeleteIcon';
+import DownChevronArrow from '@icon/DownChevronArrow';
+import EditIcon2 from '@icon/EditIcon2';
+import RefreshIcon from '@icon/RefreshIcon';
+import TickIcon from '@icon/TickIcon';
 import useStore from '@store/store';
+import { ChatInterface } from '@type/chat';
 import React, {
   DetailedHTMLProps,
   HTMLAttributes,
   useEffect,
   useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import { CodeProps, ReactMarkdownProps } from 'react-markdown/lib/ast-to-react';
 import rehypeHighlight from 'rehype-highlight';
@@ -12,17 +23,8 @@ import rehypeKatex from 'rehype-katex';
 import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-import CrossIcon from '@icon/CrossIcon';
-import DeleteIcon from '@icon/DeleteIcon';
-import DownChevronArrow from '@icon/DownChevronArrow';
-import EditIcon2 from '@icon/EditIcon2';
-import RefreshIcon from '@icon/RefreshIcon';
-import TickIcon from '@icon/TickIcon';
-import useSubmit from '@hooks/useSubmit';
-import { ChatInterface } from '@type/chat';
-import PopupModal from '@components/PopupModal';
-import { codeLanguageSubset } from '@constants/chat';
 import CodeBlock from './CodeBlock';
+import CommandPrompt from './CommandPrompt';
 
 const MessageContent = ({
   role,
@@ -38,8 +40,8 @@ const MessageContent = ({
   const [isEdit, setIsEdit] = useState<boolean>(sticky);
 
   return (
-    <div className="relative flex flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
-      <div className="flex flex-grow flex-col gap-3"></div>
+    <div className='relative flex flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]'>
+      <div className='flex flex-grow flex-col gap-3'></div>
       {isEdit ? (
         <EditView
           content={content}
@@ -123,7 +125,7 @@ const ContentView = React.memo(
 
     return (
       <>
-        <div className="markdown prose w-full break-words dark:prose-invert dark">
+        <div className='markdown prose w-full break-words dark:prose-invert dark'>
           <ReactMarkdown
             remarkPlugins={[
               remarkGfm,
@@ -141,7 +143,7 @@ const ContentView = React.memo(
                 },
               ],
             ]}
-            linkTarget="_new"
+            linkTarget='_new'
             components={{
               code,
               p,
@@ -150,7 +152,7 @@ const ContentView = React.memo(
             {content}
           </ReactMarkdown>
         </div>
-        <div className="flex justify-end gap-2 w-full mt-2">
+        <div className='flex justify-end gap-2 w-full mt-2'>
           {isDelete || (
             <>
               {role === 'assistant' && messageIndex === lastMessageIndex && (
@@ -168,12 +170,12 @@ const ContentView = React.memo(
           {isDelete && (
             <>
               <button
-                className="p-1 hover:text-white"
+                className='p-1 hover:text-white'
                 onClick={() => setIsDelete(false)}
               >
                 <CrossIcon />
               </button>
-              <button className="p-1 hover:text-white" onClick={handleDelete}>
+              <button className='p-1 hover:text-white' onClick={handleDelete}>
                 <TickIcon />
               </button>
             </>
@@ -207,7 +209,7 @@ const p = React.memo(
     > &
       ReactMarkdownProps
   ) => {
-    return <p className="whitespace-pre-wrap">{props?.children}</p>;
+    return <p className='whitespace-pre-wrap'>{props?.children}</p>;
   }
 );
 
@@ -219,9 +221,9 @@ const MessageButton = ({
   icon: React.ReactElement;
 }) => {
   return (
-    <div className="text-gray-400 flex self-end lg:self-center justify-center gap-3 md:gap-4  visible">
+    <div className='text-gray-400 flex self-end lg:self-center justify-center gap-3 md:gap-4  visible'>
       <button
-        className="p-1 rounded-md hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 disabled:dark:hover:text-gray-400 md:invisible md:group-hover:visible"
+        className='p-1 rounded-md hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 disabled:dark:hover:text-gray-400 md:invisible md:group-hover:visible'
         onClick={onClick}
       >
         {icon}
@@ -268,7 +270,7 @@ const UpButton = ({
 }) => {
   return (
     <MessageButton
-      icon={<DownChevronArrow className="rotate-180" />}
+      icon={<DownChevronArrow className='rotate-180' />}
       onClick={onClick}
     />
   );
@@ -299,15 +301,10 @@ const EditView = ({
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const textareaRef = React.createRef<HTMLTextAreaElement>();
 
+  const { t } = useTranslation();
+
   const resetTextAreaHeight = () => {
     if (textareaRef.current) textareaRef.current.style.height = 'auto';
-  };
-
-  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = `${e.target.scrollHeight}px`;
-    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -366,6 +363,13 @@ const EditView = ({
       textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
+  }, [_content]);
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
   }, []);
 
   return (
@@ -379,14 +383,12 @@ const EditView = ({
       >
         <textarea
           ref={textareaRef}
-          className="m-0 resize-none rounded-lg bg-transparent overflow-y-hidden focus:ring-0 focus-visible:ring-0 leading-7 w-full"
+          className='m-0 resize-none rounded-lg bg-transparent overflow-y-hidden focus:ring-0 focus-visible:ring-0 leading-7 w-full'
           onChange={(e) => {
             _setContent(e.target.value);
           }}
           value={_content}
-          onInput={handleInput}
           onKeyDown={handleKeyDown}
-          placeholder="Type your message here..."
           rows={1}
         ></textarea>
       </div>
@@ -396,12 +398,13 @@ const EditView = ({
         handleSave={handleSave}
         setIsModalOpen={setIsModalOpen}
         setIsEdit={setIsEdit}
+        _setContent={_setContent}
       />
       {isModalOpen && (
         <PopupModal
           setIsModalOpen={setIsModalOpen}
-          title="Heads Up!"
-          message="Kindly take note that if you submit this message, all following messages will be erased."
+          title={t('warning') as string}
+          message={t('clearMessageWarning') as string}
           handleConfirm={handleSaveAndSubmit}
         />
       )}
@@ -416,52 +419,67 @@ const EditViewButtons = React.memo(
     handleSave,
     setIsModalOpen,
     setIsEdit,
+    _setContent,
   }: {
     sticky?: boolean;
     handleSaveAndSubmit: () => void;
     handleSave: () => void;
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
+    _setContent: React.Dispatch<React.SetStateAction<string>>;
   }) => {
+    const { t } = useTranslation();
+
     return (
-      <div className="text-center mt-2 flex justify-center">
-        {sticky && (
-          <button
-            className="btn relative mr-2 btn-primary"
-            onClick={handleSaveAndSubmit}
-          >
-            <div className="flex items-center justify-center gap-2">Send</div>
-          </button>
-        )}
+      <div className='flex'>
+        <div className='flex-1 text-center mt-2 flex justify-center'>
+          {sticky && (
+            <button
+              className='btn relative mr-2 btn-primary'
+              onClick={handleSaveAndSubmit}
+            >
+              <div className='flex items-center justify-center gap-2'>
+                {t('saveAndSubmit')}
+              </div>
+            </button>
+          )}
 
-        <button
-          className={`btn relative mr-2 ${
-            sticky ? 'btn-neutral' : 'btn-primary'
-          }`}
-          onClick={handleSave}
-        >
-          <div className="flex items-center justify-center gap-2">Save</div>
-        </button>
-
-        {sticky || (
           <button
-            className="btn relative mr-2 btn-neutral"
-            onClick={() => {
-              setIsModalOpen(true);
-            }}
+            className={`btn relative mr-2 ${
+              sticky ? 'btn-neutral' : 'btn-primary'
+            }`}
+            onClick={handleSave}
           >
-            <div className="flex items-center justify-center gap-2">Send</div>
+            <div className='flex items-center justify-center gap-2'>
+              {t('save')}
+            </div>
           </button>
-        )}
 
-        {sticky || (
-          <button
-            className="btn relative btn-neutral"
-            onClick={() => setIsEdit(false)}
-          >
-            <div className="flex items-center justify-center gap-2">Cancel</div>
-          </button>
-        )}
+          {sticky || (
+            <button
+              className='btn relative mr-2 btn-neutral'
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
+            >
+              <div className='flex items-center justify-center gap-2'>
+                {t('saveAndSubmit')}
+              </div>
+            </button>
+          )}
+
+          {sticky || (
+            <button
+              className='btn relative btn-neutral'
+              onClick={() => setIsEdit(false)}
+            >
+              <div className='flex items-center justify-center gap-2'>
+                {t('cancel')}
+              </div>
+            </button>
+          )}
+        </div>
+        <CommandPrompt _setContent={_setContent} />
       </div>
     );
   }

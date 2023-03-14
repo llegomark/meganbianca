@@ -1,0 +1,28 @@
+{
+  "description": "Welcome to our AI-powered virtual assistant that provides quick and accurate assistance by generating text-based content on various topics. Our sophisticated language model is designed to cater to your needs and provide expert guidance on a variety of topics.",
+  "features": {
+    "title": "Features",
+    "paragraph1": "Intelligent and sophisticated language model: Our AI language model is designed to understand your queries and provide helpful responses that are informative and tailored to your needs.",
+    "paragraph2": "Expert guidance on various topics: Whether you need help with homework, writing an essay, or researching a topic, our AI language model is here to provide expert guidance and support.",
+    "paragraph3": "Helpful responses: We strive to provide helpful responses to all your queries. However, please note that the information provided by the AI language model may not always be entirely accurate or comprehensive. Therefore, we advise you to double-check the information and use your own judgment before making any decisions based on it.",
+    "paragraph4": "Quick and efficient processing times: Our AI language model processes your queries quickly and efficiently, providing you with timely responses to your inquiries.",
+    "paragraph5": "24/7 availability: Our virtual assistant is available to assist you 24/7, so you can get the help you need whenever you need it.",
+    "paragraph6": "Create and edit messages from multiple perspectives: Our platform allows you to create and edit messages from multiple perspectives, including the system, assistant, and user. This feature makes it easier to maintain a coherent and seamless conversation flow.",
+    "paragraph7": "Tweak model parameters: With our platform, you can tweak model parameters such as temperature to achieve an unexpected outcome in your generated text.",
+    "paragraph8": "Customize message order: You also have the flexibility to change the order of messages to suit your needs. You can add new messages in between old ones for a seamless conversation flow.",
+    "paragraph9": "Automatic backing up: Our platform automatically backs up all chat history to your browser's local storage, so you never have to worry about losing your chat history.",
+    "paragraph10": "Import and export chat data: You can easily import and export chat data as a JSON file, making it easy to transfer conversations between devices.",
+    "paragraph11": "Download chat log: Lastly, you can download your entire chat log as markdown, pdf, or image, providing you with the flexibility to save your conversations in your preferred format.",
+    "paragraph12": "Prompts library: We have a library of prompts that you can use to generate text. You can also create your own prompts and save them to the library for future use."
+  },
+  "disclaimer": {
+    "title": "Disclaimer",
+    "paragraph1": "This website uses an AI language model designed to provide information to users. However, please note that the information provided by the AI language model may not always be entirely accurate or comprehensive. Therefore, we advise users to verify any information provided and exercise their own judgment in using it.",
+    "paragraph2": "Please be aware that the AI language model provides general information only and should not be considered as professional advice. It is not a substitute for human expertise, and users should not rely solely on the information provided by the model. The AI language model cannot guarantee the accuracy or completeness of any information provided.",
+    "paragraph3": "Users should take responsibility for verifying the accuracy of any information provided by the AI language model before making any decisions based on it. The information provided by the AI language model should be used at the user's own risk.",
+    "paragraph4": "Please note that this disclaimer only covers information provided by the AI language model and not information provided by other sources. We are not liable for any damages or losses that may result from the use of the information provided by the AI language model.",
+    "paragraph5": "We reserve the right to update or modify this disclaimer at any time without prior notice. It is the responsibility of the user to review this disclaimer periodically to ensure that it remains relevant and accurate.",
+    "paragraph6": "Copyright © 2023 -",
+    "paragraph7": "Mark Anthony Llego"
+  }
+}

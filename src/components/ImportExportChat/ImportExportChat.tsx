@@ -1,33 +1,34 @@
-import useStore from '@store/store';
-import { useRef, useState } from 'react';
-
 import PopupModal from '@components/PopupModal';
 import ExportIcon from '@icon/ExportIcon';
-import { isChats } from '@utils/chat';
+import useStore from '@store/store';
+import { validateAndFixChats } from '@utils/chat';
 import { getToday } from '@utils/date';
 import downloadFile from '@utils/downloadFile';
+import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ImportExportChat = () => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
     <>
       <a
-        className="flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm"
+        className='flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm'
         onClick={() => {
           setIsModalOpen(true);
         }}
       >
-        <ExportIcon className="w-4 h-4" />
-        Import/Export Chat
+        <ExportIcon className='w-4 h-4' />
+        {t('import')}/{t('export')} {t('Chat')}
       </a>
       {isModalOpen && (
         <PopupModal
-          title="Import/Export Chat Messages"
+          title={`${t('import')}/${t('export')} ${t('Messages')}`}
           setIsModalOpen={setIsModalOpen}
           cancelButton={false}
         >
-          <div className="p-6 border-b border-gray-200 dark:border-gray-600">
+          <div className='p-6 border-b border-gray-200 dark:border-gray-600'>
             <ImportChat />
             <ExportChat />
           </div>
@@ -38,6 +39,7 @@ const ImportExportChat = () => {
 };
 
 const ImportChat = () => {
+  const { t } = useTranslation();
   const setChats = useStore.getState().setChats;
   const inputRef = useRef<HTMLInputElement>(null);
   const [alert, setAlert] = useState<{
@@ -57,17 +59,11 @@ const ImportChat = () => {
 
         try {
           const parsedData = JSON.parse(data);
-          if (isChats(parsedData)) {
+          if (validateAndFixChats(parsedData)) {
             setChats(parsedData);
-            setAlert({
-              message: 'Chat Messages Succesfully Imported!',
-              success: true,
-            });
+            setAlert({ message: 'Succesfully imported!', success: true });
           } else {
-            setAlert({
-              message: 'Invalid Messages Data Format',
-              success: false,
-            });
+            setAlert({ message: 'Invalid chats data format', success: false });
           }
         } catch (error: unknown) {
           setAlert({ message: (error as Error).message, success: false });
@@ -79,19 +75,19 @@ const ImportChat = () => {
   };
   return (
     <>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-        Import (.json file)
+      <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>
+        {t('import')} (.json file)
       </label>
       <input
-        className="w-full text-sm file:p-2 text-gray-800 file:text-gray-700 dark:text-gray-300 dark:file:text-gray-200 rounded-md cursor-pointer focus:outline-none bg-gray-50 file:bg-gray-100 dark:bg-gray-800 dark:file:bg-gray-700 file:border-0 border border-gray-300 dark:border-gray-600 placeholder-gray-900 dark:placeholder-gray-300 file:cursor-pointer"
-        type="file"
+        className='w-full text-sm file:p-2 text-gray-800 file:text-gray-700 dark:text-gray-300 dark:file:text-gray-200 rounded-md cursor-pointer focus:outline-none bg-gray-50 file:bg-gray-100 dark:bg-gray-800 dark:file:bg-gray-700 file:border-0 border border-gray-300 dark:border-gray-600 placeholder-gray-900 dark:placeholder-gray-300 file:cursor-pointer'
+        type='file'
         ref={inputRef}
       />
       <button
-        className="btn btn-small btn-primary mt-3"
+        className='btn btn-small btn-primary mt-3'
         onClick={handleFileUpload}
       >
-        Import
+        {t('import')}
       </button>
       {alert && (
         <div
@@ -109,23 +105,20 @@ const ImportChat = () => {
 };
 
 const ExportChat = () => {
+  const { t } = useTranslation();
   const chats = useStore.getState().chats;
-
-  const handleExport = () => {
-    if (chats) {
-      const randomNumber = Math.floor(Math.random() * 1000000);
-      const fileName = getToday() + '_' + randomNumber;
-      downloadFile(chats, fileName);
-    }
-  };
-
   return (
-    <div className="mt-6">
-      <div className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-        Export (.json file)
+    <div className='mt-6'>
+      <div className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>
+        {t('export')} (.json file)
       </div>
-      <button className="btn btn-small btn-primary" onClick={handleExport}>
-        Export
+      <button
+        className='btn btn-small btn-primary'
+        onClick={() => {
+          if (chats) downloadFile(chats, getToday());
+        }}
+      >
+        {t('export')}
       </button>
     </div>
   );
