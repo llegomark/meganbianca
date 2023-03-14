@@ -11,13 +11,15 @@ const ImportExportChat = () => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <>
       <a
         className='flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm'
-        onClick={() => {
-          setIsModalOpen(true);
-        }}
+        onClick={openModal}
       >
         <ExportIcon className='w-4 h-4' />
         {t('import')}/{t('export')} {t('Chat')}
@@ -106,12 +108,12 @@ const ImportChat = () => {
 
 const ExportChat = () => {
   const { t } = useTranslation();
-  const chats = useStore.getState().chats;
+  const chats = useStore((state) => state.chats);
   return (
     <div className='mt-6'>
-      <div className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>
+      <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>
         {t('export')} (.json file)
-      </div>
+      </label>
       <button
         className='btn btn-small btn-primary'
         onClick={() => {

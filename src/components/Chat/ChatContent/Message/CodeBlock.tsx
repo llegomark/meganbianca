@@ -54,7 +54,7 @@ const CodeBar = React.memo(
           ) : (
             <>
               <CopyIcon />
-              Copy code
+              Copy Code
             </>
           )}
         </button>
