@@ -5,7 +5,13 @@ import DeleteIcon from '@icon/DeleteIcon';
 import EditIcon from '@icon/EditIcon';
 import TickIcon from '@icon/TickIcon';
 import useStore from '@store/store';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { shallow } from 'zustand/shallow';
 
 const ChatHistoryList = () => {
@@ -57,12 +63,16 @@ const ChatHistoryClass = {
 const ChatHistory = React.memo<{ title: string; chatIndex: number }>(
   ({ title, chatIndex }) => {
     const initialiseNewChat = useInitialiseNewChat();
-    const setCurrentChatIndex = useStore((state) => state.setCurrentChatIndex);
+    const setCurrentChatIndex = useCallback(
+      useStore((state) => state.setCurrentChatIndex),
+      []
+    );
     const setChats = useStore((state) => state.setChats);
     const active = useStore((state) => state.currentChatIndex === chatIndex);
 
     const [action, setAction] = useState<Action>('none');
-    const [_title, _setTitle] = useState<string>(title);
+    const _title = useMemo(() => title, [title]);
+    const _setTitle = useCallback((title: string) => {}, []);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleTick = useCallback(

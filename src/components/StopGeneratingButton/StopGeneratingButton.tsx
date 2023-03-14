@@ -9,8 +9,8 @@ const StopGeneratingButton = () => {
       className='absolute bottom-6 left-0 right-0 m-auto flex md:w-full md:m-auto gap-0 md:gap-2 justify-center'
       onClick={() => setGenerating(false)}
     >
-      <button className='btn relative btn-neutral border-0 md:border'>
-        <div className='flex w-full items-center justify-center gap-2'>
+      <button className='btn relative btn-neutral border-0 md:border hover:bg-gray-100 dark:hover:text-gray-400 dark:hover:bg-gray-900 disabled:hover:bg-transparent dark:disabled:hover:bg-transparent'>
+        <div className='flex w-full items-center justify-center gap-2 text-base-color'>
           <svg
             stroke='currentColor'
             fill='none'

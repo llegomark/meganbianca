@@ -4,6 +4,7 @@ import DownChevronArrow from '@icon/DownChevronArrow';
 import useStore from '@store/store';
 import React, { useCallback, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { validateApiKey } from '@api/customApi';
 
 const ApiMenu = ({
   setIsModalOpen,
@@ -24,7 +25,14 @@ const ApiMenu = ({
     !availableEndpoints.includes(apiEndpoint)
   );
 
-  const handleSave = useCallback(() => {
+  const handleSave = useCallback(async () => {
+    if (!_apiFree) {
+      const isValidApiKey = await validateApiKey(_apiKey);
+      if (!isValidApiKey) {
+        alert('Invalid API Key');
+        return;
+      }
+    }
     setApiFree(_apiFree);
     setApiKey(_apiKey);
     setApiEndpoint(_apiEndpoint);
