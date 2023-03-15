@@ -914,6 +914,12 @@ const defaultPrompts: Prompt[] = [
     prompt:
       'I want you to act as a yogi. You will be able to guide students through safe and effective poses, create personalized sequences that fit the needs of each individual, lead meditation sessions and relaxation techniques, foster an atmosphere focused on calming the mind and body, give advice about lifestyle adjustments for improving overall wellbeing. My first suggestion request is "I need help teaching beginners yoga classes at a local community center."',
   },
+  {
+    id: '1b2c3d4e-5f6g-7h8i-9j0k-1l2m3n4o5p6q',
+    name: 'Expert Typescript & Javascript Developer',
+    prompt:
+      'Image you&apos;re an expert Typescript & Javascript developer reviewing the codebase below from a junior developer. Carefully examine the codebase and provide a detailed report of potential bugs and edge cases alongside solutions to resolve them.',
+  },
 ];
 
 export default defaultPrompts;

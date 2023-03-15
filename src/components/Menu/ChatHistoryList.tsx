@@ -5,13 +5,7 @@ import DeleteIcon from '@icon/DeleteIcon';
 import EditIcon from '@icon/EditIcon';
 import TickIcon from '@icon/TickIcon';
 import useStore from '@store/store';
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { shallow } from 'zustand/shallow';
 
 const ChatHistoryList = () => {
@@ -20,6 +14,8 @@ const ChatHistoryList = () => {
     (state) => state.chats?.map((chat) => chat.title),
     shallow
   );
+
+  const [visibleChats, setVisibleChats] = useState<number>(10);
 
   useEffect(() => {
     if (
@@ -34,20 +30,30 @@ const ChatHistoryList = () => {
   return (
     <div className='flex-col flex-1 overflow-y-auto border-b border-white/20'>
       <div className='flex flex-col gap-2 text-gray-100 text-sm'>
-        {chatTitles &&
-          chatTitles.map((title, index) => (
-            <ChatHistory
-              title={title}
-              key={`${title}-${index}`}
-              chatIndex={index}
-            />
-          ))}
+        {chatTitles?.slice(0, visibleChats).map((title, index) => (
+          <ChatHistory
+            title={title}
+            key={`${title}-${index}`}
+            chatIndex={index}
+          />
+        ))}
       </div>
+
+      {chatTitles?.length && chatTitles.length > visibleChats && (
+        <div className='flex justify-center'>
+          <button
+            className='btn relative btn-dark btn-small m-auto mb-2'
+            onClick={() => setVisibleChats(visibleChats + 10)}
+          >
+            <div className='flex items-center justify-center gap-2'>
+              Show More
+            </div>
+          </button>
+        </div>
+      )}
     </div>
   );
 };
-
-type Action = 'none' | 'edit' | 'delete';
 
 const ChatHistoryClass = {
   normal:
@@ -60,75 +66,70 @@ const ChatHistoryClass = {
     'absolute inset-y-0 right-0 w-8 z-10 bg-gradient-to-l from-gray-800',
 };
 
-const ChatHistory = React.memo<{ title: string; chatIndex: number }>(
-  ({ title, chatIndex }) => {
+const ChatHistory = React.memo(
+  ({ title, chatIndex }: { title: string; chatIndex?: number }) => {
     const initialiseNewChat = useInitialiseNewChat();
-    const setCurrentChatIndex = useCallback(
-      useStore((state) => state.setCurrentChatIndex),
-      []
-    );
+
+    // Add a null check here
+    const setCurrentChatIndex = useStore((state) => state.setCurrentChatIndex);
     const setChats = useStore((state) => state.setChats);
     const active = useStore((state) => state.currentChatIndex === chatIndex);
 
-    const [action, setAction] = useState<Action>('none');
-    const _title = useMemo(() => title, [title]);
-    const _setTitle = useCallback((title: string) => {}, []);
+    const [isDelete, setIsDelete] = useState<boolean>(false);
+    const [isEdit, setIsEdit] = useState<boolean>(false);
+    const [_title, _setTitle] = useState<string>(title);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleTick = useCallback(
-      (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.stopPropagation();
-        const updatedChats = JSON.parse(
-          JSON.stringify(useStore.getState().chats)
-        );
-        if (action === 'edit') {
-          updatedChats[chatIndex].title = _title;
-          setChats(updatedChats);
-          setAction('none');
-        } else if (action === 'delete') {
-          updatedChats.splice(chatIndex, 1);
-          if (updatedChats.length > 0) {
-            setCurrentChatIndex(0);
-            setChats(updatedChats);
-          } else {
-            initialiseNewChat();
-          }
-          setAction('none');
-        }
-      },
-      [
-        action,
-        chatIndex,
-        _title,
-        initialiseNewChat,
-        setCurrentChatIndex,
-        setChats,
-      ]
-    );
+    const handleTick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      const updatedChats = JSON.parse(
+        JSON.stringify(useStore.getState().chats)
+      );
 
-    const handleCross = useCallback(() => {
-      setAction('none');
-    }, []);
+      if (isEdit) {
+        updatedChats[chatIndex || 0].title = _title;
+        setChats(updatedChats);
+        setIsEdit(false);
+      } else if (isDelete) {
+        updatedChats.splice(chatIndex || 0, 1);
+
+        if (updatedChats.length > 0) {
+          setCurrentChatIndex(0);
+          setChats(updatedChats);
+        } else {
+          initialiseNewChat?.(); // Add a null check here
+        }
+
+        setIsDelete(false);
+      }
+    };
+
+    const handleCross = () => {
+      setIsDelete(false);
+      setIsEdit(false);
+    };
 
     useEffect(() => {
-      if (inputRef && inputRef.current && action === 'edit')
-        inputRef.current.focus();
-    }, [action]);
+      if (inputRef && inputRef.current) inputRef.current.focus();
+    }, [isEdit]);
 
     return (
       <a
         className={active ? ChatHistoryClass.active : ChatHistoryClass.normal}
         onClick={(e) => {
-          setCurrentChatIndex(chatIndex);
+          setCurrentChatIndex(chatIndex || 0);
         }}
       >
         <ChatIcon />
         <div className='flex-1 text-ellipsis max-h-5 overflow-hidden break-all relative'>
-          {action === 'edit' ? (
+          {isEdit ? (
             <input
               type='text'
+              maxLength={50}
               className='focus:outline-blue-600 text-sm border-none bg-transparent p-0 m-0 w-full'
               value={_title}
+              pattern='[A-Za-z0-9\s]+'
+              required
               onChange={(e) => {
                 _setTitle(e.target.value);
               }}
@@ -138,7 +139,7 @@ const ChatHistory = React.memo<{ title: string; chatIndex: number }>(
             _title
           )}
 
-          {action === 'none' || (
+          {isEdit || (
             <div
               className={
                 active
@@ -150,7 +151,7 @@ const ChatHistory = React.memo<{ title: string; chatIndex: number }>(
         </div>
         {active && (
           <div className='absolute flex right-1 z-10 text-gray-300 visible'>
-            {action === 'delete' || action === 'edit' ? (
+            {isDelete || isEdit ? (
               <>
                 <button className='p-1 hover:text-white' onClick={handleTick}>
                   <TickIcon />
@@ -163,13 +164,13 @@ const ChatHistory = React.memo<{ title: string; chatIndex: number }>(
               <>
                 <button
                   className='p-1 hover:text-white'
-                  onClick={() => setAction('edit')}
+                  onClick={() => setIsEdit(true)}
                 >
                   <EditIcon />
                 </button>
                 <button
                   className='p-1 hover:text-white'
-                  onClick={() => setAction('delete')}
+                  onClick={() => setIsDelete(true)}
                 >
                   <DeleteIcon />
                 </button>
