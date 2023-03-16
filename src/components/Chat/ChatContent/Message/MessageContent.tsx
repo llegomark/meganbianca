@@ -20,7 +20,6 @@ import ReactMarkdown from 'react-markdown';
 import { CodeProps, ReactMarkdownProps } from 'react-markdown/lib/ast-to-react';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeKatex from 'rehype-katex';
-import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import CodeBlock from './CodeBlock';
@@ -132,7 +131,6 @@ const ContentView = React.memo(
               [remarkMath, { singleDollarTextMath: false }],
             ]}
             rehypePlugins={[
-              rehypeSanitize,
               [rehypeKatex, { output: 'mathml' }],
               [
                 rehypeHighlight,

@@ -8,6 +8,8 @@ import useStore from '@store/store';
 import React, { useEffect, useRef, useState } from 'react';
 import { shallow } from 'zustand/shallow';
 
+const visibleChatsCount = 10;
+
 const ChatHistoryList = () => {
   const currentChatIndex = useStore((state) => state.currentChatIndex);
   const chatTitles = useStore(
@@ -15,7 +17,7 @@ const ChatHistoryList = () => {
     shallow
   );
 
-  const [visibleChats, setVisibleChats] = useState<number>(10);
+  const [visibleChats, setVisibleChats] = useState<number>(visibleChatsCount);
 
   useEffect(() => {
     if (
@@ -33,7 +35,7 @@ const ChatHistoryList = () => {
         {chatTitles?.slice(0, visibleChats).map((title, index) => (
           <ChatHistory
             title={title}
-            key={`${title}-${index}`}
+            key={`chat-history-${title}-${index}`}
             chatIndex={index}
           />
         ))}
@@ -43,7 +45,7 @@ const ChatHistoryList = () => {
         <div className='flex justify-center'>
           <button
             className='btn relative btn-dark btn-small m-auto mb-2'
-            onClick={() => setVisibleChats(visibleChats + 10)}
+            onClick={() => setVisibleChats(visibleChats + visibleChatsCount)}
           >
             <div className='flex items-center justify-center gap-2'>
               Show More
@@ -67,7 +69,7 @@ const ChatHistoryClass = {
 };
 
 const ChatHistory = React.memo(
-  ({ title, chatIndex }: { title: string; chatIndex?: number }) => {
+  ({ title, chatIndex }: { title: string; chatIndex: number }) => {
     const initialiseNewChat = useInitialiseNewChat();
 
     // Add a null check here
@@ -87,17 +89,17 @@ const ChatHistory = React.memo(
       );
 
       if (isEdit) {
-        updatedChats[chatIndex || 0].title = _title;
+        updatedChats[chatIndex].title = _title;
         setChats(updatedChats);
         setIsEdit(false);
       } else if (isDelete) {
-        updatedChats.splice(chatIndex || 0, 1);
+        updatedChats.splice(chatIndex, 1);
 
         if (updatedChats.length > 0) {
           setCurrentChatIndex(0);
           setChats(updatedChats);
         } else {
-          initialiseNewChat?.(); // Add a null check here
+          initialiseNewChat?.();
         }
 
         setIsDelete(false);
@@ -116,9 +118,7 @@ const ChatHistory = React.memo(
     return (
       <a
         className={active ? ChatHistoryClass.active : ChatHistoryClass.normal}
-        onClick={(e) => {
-          setCurrentChatIndex(chatIndex || 0);
-        }}
+        onClick={() => setCurrentChatIndex(chatIndex)}
       >
         <ChatIcon />
         <div className='flex-1 text-ellipsis max-h-5 overflow-hidden break-all relative'>
